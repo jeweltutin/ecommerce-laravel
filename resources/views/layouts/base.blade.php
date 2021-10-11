@@ -52,11 +52,11 @@
 														<a title="Dashboard" href="{{ route('admin.dashboard') }}">Dashboard</a>
 													</li>
 													<li class="menu-item" >
-														<a title="Euro (EUR)" href="#">Euro (EUR)</a>
+														<a title="logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 													</li>
-													<li class="menu-item" >
-														<a title="Dollar (USD)" href="#">Dollar (USD)</a>
-													</li>
+													<form method="POST" id="logout-form" action="{{ route('logout') }}">
+														@csrf
+													</form>
 												</ul>
 											</li>
 										@else
@@ -66,6 +66,12 @@
 													<li class="menu-item" >
 														<a title="Dashboard" href="{{ route('user.dashboard') }}">Dashboard</a>
 													</li>
+													<li class="menu-item" >
+														<a title="logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+													</li>
+													<form method="POST" id="logout-form" action="{{ route('logout') }}">
+														@csrf
+													</form>
 												</ul>
 											</li>
 										@endif
