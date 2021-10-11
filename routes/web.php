@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\HomeComponent;
+use App\Http\Livewire\ShopComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,4 @@ use App\Http\Livewire\HomeComponent;
 });*/ 
 
 Route::get('/', HomeComponent::class);
+Route::get('/shop', ShopComponent::class );
