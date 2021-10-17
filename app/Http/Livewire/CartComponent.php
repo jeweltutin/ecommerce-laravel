@@ -8,22 +8,27 @@ use Session;
 
 class CartComponent extends Component
 {
-    public function render()
+    public $products;
+    public array $quantity = [];
+
+    public function mount()
     {
-        return view('livewire.cart-component')->layout('layouts.base');
+        $this->products = Cart::content();
+        foreach ($this->products as $product) {
+            $this->quantity[$product->id] = 1;
+        }
     }
+
     public function increaseQuantity($rowId){
         $product = Cart::get($rowId);
         $qty = $product->qty + 1;
         Cart::update($rowId,$qty);
-        return redirect()->route('product.cart');
     }
 
     public function decreaseQuantity($rowId){
         $product = Cart::get($rowId);
         $qty = $product->qty - 1;
         Cart::update($rowId,$qty);
-        return back();
     }
 
     public function destroy($rowId){
@@ -37,6 +42,9 @@ class CartComponent extends Component
         Cart::destroy();
     }
 
-
+    public function render(){
+        $cartitems = Cart::content();
+        return view('livewire.cart-component', compact('cartitems'))->layout('layouts.base');
+    }
 
 }

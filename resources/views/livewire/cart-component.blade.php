@@ -1,3 +1,4 @@
+<div>
 <!--main area-->
 <main id="main" class="main-site">
 
@@ -228,3 +229,4 @@
 
 </main>
 <!--main area-->
+</div>
