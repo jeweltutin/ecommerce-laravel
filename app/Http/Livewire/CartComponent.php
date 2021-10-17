@@ -8,7 +8,6 @@ use Session;
 
 class CartComponent extends Component
 {
-
     public function increaseQuantity($rowId){
         $product = Cart::get($rowId);
         $qty = $product->qty + 1;
