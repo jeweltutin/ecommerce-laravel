@@ -8,16 +8,6 @@ use Session;
 
 class CartComponent extends Component
 {
-    public $products;
-    public array $quantity = [];
-
-    public function mount()
-    {
-        $this->products = Cart::content();
-        foreach ($this->products as $product) {
-            $this->quantity[$product->id] = 1;
-        }
-    }
 
     public function increaseQuantity($rowId){
         $product = Cart::get($rowId);
