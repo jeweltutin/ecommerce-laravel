@@ -56,7 +56,7 @@
                         </div>
                     </div>
                 <div class="card widget-content bg-white">
-                    
+                    <hr />
                 </div>
             </div>
         </div>
