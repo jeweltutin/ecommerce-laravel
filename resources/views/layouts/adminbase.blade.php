@@ -12,6 +12,7 @@
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
     <link href="{{ asset('main.css') }}" rel="stylesheet">
+    @livewireStyles
 </head>
 
 <body>
@@ -582,6 +583,7 @@
         </div>
     </div>
     <script type="text/javascript" src="{{ asset('assets/scripts/main.js') }}"></script>
+    @livewireScripts
 </body>
 
 </html>

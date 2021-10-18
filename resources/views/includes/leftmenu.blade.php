@@ -1,13 +1,13 @@
 <li class="app-sidebar__heading">Dashboards</li>
 <li>
     <a href="{{ route('admin.dashboard') }}" class="mm-active">
-        <i class="metismenu-icon pe-7s-rocket"></i>
+        <i class="metismenu-icon pe-7s-display2"></i>
         Dashboard
     </a>
 </li>
 <li>
     <a href="{{ route('admin.categories') }}">
-        <i class="metismenu-icon pe-7s-pendrive">
+        <i class="metismenu-icon pe-7s-check">
         </i>Categories
     </a>
 </li>

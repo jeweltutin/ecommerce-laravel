@@ -37,10 +37,21 @@
                 </div>
             </div>
         </div>
+        <div class="row " style="padding-bottom: 15px;">      
+            <div class="col-md-12">  
+                 <div class="main-card card">                       
+                        <div class="card-header">
+                          All Categories
+                        <div class="btn-actions-pane-right">
+                            <a href="{{ route('admin.addcategories') }}" class="btn btn-success pull-right">Add New Category</a>
+                        </div>                 
+                </div></div>                              
+            </div>
+        </div>
         <div class="row" style="padding-top:15px;">
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
-                    <div class="card-body"><h5 class="card-title">All Categories</h5>
+                    <div class="card-body"><h5 class="card-title">Categories List</h5>
                         <table class="mb-0 table table-striped">
                             <thead>
                             <tr>
