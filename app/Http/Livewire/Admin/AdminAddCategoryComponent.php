@@ -29,6 +29,8 @@ class AdminAddCategoryComponent extends Component
         $category->save();
 
         session()->flash('message', 'Category created Successfully');
+        //return redirect()->to('');
+        return redirect()->route('admin.addcategories');
     }
 
 

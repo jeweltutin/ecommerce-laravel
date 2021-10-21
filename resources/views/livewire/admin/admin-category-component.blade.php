@@ -67,7 +67,7 @@
                                         <th scope="row">{{ $category->id }}</th>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
-                                        <td>@mdo</td>                                   
+                                        <td><a href="{{ route('admin.editcategory', ['category_slug' => $category->slug]) }}"> <i class="fa fa-edit fa-1x"></i></a></td>                                   
                                     </tr>
                                 @endforeach
                             </tbody>

@@ -33,3 +33,20 @@ Copyright (c) 2015 Daniel Eden
  .error{
      color: red;
  }
+ .wrap-breadcrumb ul {
+    padding: 0;
+    text-align: left;
+    margin: 35px 0;
+}
+.wrap-breadcrumb ul li:not(:last-child)::after {
+    content: '/';
+    font-size: 13px;
+    color: #222222;
+    padding-left: 11px;
+    padding-right: 11px;
+}
+.wrap-breadcrumb ul li {
+    display: inline-block;
+    list-style: none;
+    text-align: left;
+}
