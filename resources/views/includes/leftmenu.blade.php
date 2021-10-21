@@ -11,6 +11,12 @@
         </i>Categories
     </a>
 </li>
+<li>
+    <a href="{{ route('admin.products') }}">
+        <i class="metismenu-icon pe-7s-box2">
+        </i>All Products
+    </a>
+</li>
 <li class="app-sidebar__heading">UI Components</li>
 <li>
     <a href="#">
