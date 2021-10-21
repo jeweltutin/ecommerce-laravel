@@ -52,6 +52,9 @@
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
                     <div class="card-body"><h5 class="card-title">Categories List</h5>
+                        @if (Session::has('message'))
+                            <div class="alert alert-success fade show" role="alert">{{Session::get('message')}}</div>
+                        @endif
                         <table class="mb-0 table table-striped">
                             <thead>
                             <tr>
@@ -67,7 +70,9 @@
                                         <th scope="row">{{ $category->id }}</th>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
-                                        <td><a href="{{ route('admin.editcategory', ['category_slug' => $category->slug]) }}"> <i class="fa fa-edit fa-1x"></i></a></td>                                   
+                                        <td><a href="{{ route('admin.editcategory', ['category_slug' => $category->slug]) }}"> <i class="fa fa-edit fa-1x"></i></a>
+                                            <a href="" wire:click.prevent="deleteCategory({{ $category->id }})" style="margin-left:10px;"> <i class="fa fa-times fa-1x text-danger"></i></a>
+                                        </td>                                   
                                     </tr>
                                 @endforeach
                             </tbody>
