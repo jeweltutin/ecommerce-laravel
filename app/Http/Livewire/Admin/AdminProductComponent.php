@@ -7,6 +7,21 @@ use App\Models\Product;
 
 class AdminProductComponent extends Component
 {
+    public function deleteProduct($id){
+        $product = Product::find($id);
+        if(file_exists(public_path('assets/images/products/'. $product->image))){
+            //dd('Found');
+            unlink(public_path('assets/images/products/'. $product->image));
+        }
+        
+        //$filePath = public_path('assets/images/products/'. $product->image);
+        //dd($filePath );
+
+        $product->delete();
+
+        session()->flash('message','Product Deleted Successfully');
+    }
+
     public function render()
     {
         $products = Product::orderBy('id','DESC')->paginate(10);
