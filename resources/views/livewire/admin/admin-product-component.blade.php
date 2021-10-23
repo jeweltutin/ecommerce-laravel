@@ -79,7 +79,7 @@
                                         <td>{{ $product->category->name }}</td>
                                         <td>{{ $product->created_at }}</td>
                                         <td><a href="{{ route('admin.editproduct', ['product_slug' => $product->slug]) }}"> <i class="fa fa-edit fa-1x text-info"></i></a>
-                                            <a href="" wire:click.prevent="deleteProduct({{ $product->id }})" style="margin-left:10px;"> <i class="fa fa-times fa-1x text-danger"></i></a>
+                                            <a onclick="deleteConfirmationMsg();" href="" wire:click.prevent="deleteProduct({{ $product->id }})" style="margin-left:10px;"> <i class="fa fa-times fa-1x text-danger"></i></a>
                                         </td>                               
                                     </tr>
                                 @endforeach
@@ -91,24 +91,24 @@
                 <div class="card widget-content bg-white">
                     {{ $products->links('pagination::bootstrap-4'); }}
                 </div>
-                {{-- <div class="main-card mb-3 card">
-                    <div class="card-body"><h5 class="card-title">Basic</h5>
-                        <nav class="" aria-label="Page navigation example">
-                            <ul class="pagination">
-                                
-                                <li class="page-item"><a href="javascript:void(0);" class="page-link" aria-label="Previous"><span aria-hidden="true">«</span><span class="sr-only">Previous</span></a></li>
-                                <li class="page-item"><a href="javascript:void(0);" class="page-link">1</a></li>
-                                <li class="page-item active"><a href="javascript:void(0);" class="page-link">2</a></li>
-                                <li class="page-item"><a href="javascript:void(0);" class="page-link">3</a></li>
-                                <li class="page-item"><a href="javascript:void(0);" class="page-link">4</a></li>
-                                <li class="page-item"><a href="javascript:void(0);" class="page-link">5</a></li>
-                                <li class="page-item"><a href="javascript:void(0);" class="page-link" aria-label="Next"><span aria-hidden="true">»</span><span class="sr-only">Next</span></a></li>
-                        </nav>
-                    </div>
-                </div>--}}
             </div>
         </div>
     </div>
 
 
 </div>
+
+@section('script')
+<script>
+  function deleteConfirmationMsg() {
+      let confirmAction = confirm("Are You Sure to delete this");
+      if(confirmAction){
+          return true;
+      }
+      else{
+          return false;
+      }
+      event.preventDefault();     
+  }
+ </script>
+@endsection

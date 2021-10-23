@@ -18,6 +18,7 @@ class AdminProductComponent extends Component
         //dd($filePath );
 
         $product->delete();
+        //dd('deleted');
 
         session()->flash('message','Product Deleted Successfully');
     }
