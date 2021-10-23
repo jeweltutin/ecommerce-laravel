@@ -43,7 +43,7 @@
                         <div class="card-header">
                           All Products
                         <div class="btn-actions-pane-right">
-                            <a href="{{ route('admin.addcategories') }}" class="btn btn-success pull-right">Add New Category</a>
+                            <a href="{{ route('admin.addproduct') }}" class="btn btn-success pull-right">Add New Product</a>
                         </div>                 
                 </div></div>                              
             </div>

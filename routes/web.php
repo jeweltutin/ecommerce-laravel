@@ -14,6 +14,7 @@ use App\Http\Livewire\admin\AdminCategoryComponent;
 use App\Http\Livewire\admin\AdminAddCategoryComponent;
 use App\Http\Livewire\admin\AdminEditCategoryComponent;
 use App\Http\Livewire\admin\AdminProductComponent;
+use App\Http\Livewire\admin\AdminAddProductComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,4 +56,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/admin/category/add', AdminAddCategoryComponent::class)->name('admin.addcategories');
     Route::get('/admin/category/edit/{category_slug}', AdminEditCategoryComponent::class)->name('admin.editcategory');
     Route::get('/admin/products', AdminProductComponent::class)->name('admin.products');
+    Route::get('/admin/product/add', AdminAddProductComponent::class)->name('admin.addproduct');
 });
