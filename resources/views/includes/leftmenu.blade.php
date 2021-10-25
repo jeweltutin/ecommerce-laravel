@@ -1,4 +1,4 @@
-<li class="app-sidebar__heading">Manage</li>
+<li class="app-sidebar__heading">Manage Ecommerce</li>
 <li>
     <a href="{{ route('home') }}" target="_blank">
         <i class="metismenu-icon pe-7s-rocket"> </i>
@@ -23,10 +23,17 @@
         </i>All Products
     </a>
 </li>
+<li class="app-sidebar__heading">Manage Home</li>
 <li>
     <a title="Manage Home Slider" href="{{ route('admin.homeslider') }}">
         <i class="metismenu-icon pe-7s-graph2">
         </i>Manage Home Slider
+    </a>
+</li>
+<li>
+    <a title="Manage Home Slider" href="{{ route('admin.homecategories') }}">
+        <i class="metismenu-icon pe-7s-eyedropper">
+        </i>Manage Home Categories
     </a>
 </li>
 <li class="app-sidebar__heading">UI Components</li>

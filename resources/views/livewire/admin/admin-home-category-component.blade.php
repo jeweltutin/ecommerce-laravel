@@ -2,7 +2,7 @@
     <div class="app-main__inner">
         <div class="wrap-breadcrumb">
             <ul>
-                <li class="item-link"><a href="{{ route('admin.categories') }}" class="link">Slides</a></li>
+                <li class="item-link"><a href="{{ route('admin.categories') }}" class="link">Categories Home</a></li>
                 <li class="item-link"><span>Add</span></li>
             </ul>
         </div>
@@ -31,7 +31,7 @@
             <div class="col-md-12">  
                  <div class="main-card card">                       
                         <div class="card-header">
-                          Add New Slides
+                          Manage Home Categories
                         <div class="btn-actions-pane-right">
                             <a href="{{ route('admin.homeslider') }}" class="btn btn-success pull-right">Home Slider</a>
                         </div>                 
@@ -43,39 +43,22 @@
                     <div class="main-card mb-3 card">
                         <div class="card-body">
                             @include('includes.msgshow')
-                            <h5 class="card-title">Add Slide</h5>
+                            <h5 class="card-title">Manage</h5>
                             <form class="" wire:Submit.prevent="addSlide">
                                 <div class="position-relative form-group">
-                                    <label for="sldtitle" class="">Slide Title</label>
-                                    <input id="sldtitle" placeholder="Title" type="text" class="form-control" wire:model="title">
-                                    @error('name') <span class="error">{{ $message }}</span> @enderror
-                                </div>
-                                 <div class="position-relative form-group">
-                                    <label for="subtitle" class="">Subtitle</label>
-                                    <input id="subtitle" placeholder="Subtitle" type="text" class="form-control" wire:model="subtitle">
-                                </div>
-                                <div class="position-relative form-group">
-                                    <label for="price" class="">Price</label>
-                                    <input id="price" placeholder="Price" type="text" class="form-control" wire:model="price">
-                                </div>
-                                 <div class="position-relative form-group">
-                                    <label for="link" class="">Link</label>
-                                    <input id="link" placeholder="Link" type="text" class="form-control"wire:model="link">
-                                </div>
-                                 <div class="position-relative form-group">
-                                    <label for="image" class="">Select Image:  </label>
-                                    <input type="file" id="image" class="input-file" wire:model="image">
-                                    @if($image)
-                                        <img src="{{ $image->temporaryUrl() }}" width="120">
-                                    @endif
-                                </div>
-                                 <div class="position-relative form-group">
-                                    <label for="status" class="">Status</label>
-                                    <select id="status" class="form-control" wire:model="status">
-                                        <option value="1">Active</option>
-                                        <option value="0">inactive</option>
+                                    <label for="hcate" class="">Choose Categories</label>
+                                    <select id="hcate" name="categories[]" class="sel_categories form-control" multiple="multiple">
+                                        @foreach ($categories as $category )
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
+                                <div class="position-relative form-group">
+                                    <label for="nop" class="">No of Products</label>
+                                    <input id="nop" placeholder="Number of Products" type="text" class="form-control input-md" wire:model="title">
+                                    @error('name') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+                             
                                 <button type="submit" class="mt-1 btn btn-primary">Submit</button>
                             </form>
                         </div>
