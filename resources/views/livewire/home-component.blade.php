@@ -4,7 +4,18 @@
 			<!--MAIN SLIDE-->
 			<div class="wrap-main-slide">
 				<div class="slide-carousel owl-carousel style-nav-1" data-items="1" data-loop="1" data-nav="true" data-dots="false">
-					<div class="item-slide">
+					@foreach ($slides as $slide )
+						<div class="item-slide">
+							<img src="{{ asset('assets/images/sliders') }}/{{ $slide->image }}" alt="" class="img-slide">
+							<div class="slide-info slide-1">
+								<h2 class="f-title">{!! $slide->title !!}</h2>
+								<span class="subtitle">{{ $slide->subtitle }}</span>
+								<p class="sale-info">{!! $slide->price !!}</p>
+								<a href="{{ $slide->link }}" class="btn-link">Shop Now</a>
+							</div>
+						</div>	
+					@endforeach
+					{{--<div class="item-slide">
 						<img src="{{ asset('assets/images/main-slider-1-1.jpg') }}" alt="" class="img-slide">
 						<div class="slide-info slide-1">
 							<h2 class="f-title">Kid Smart <b>Watches</b></h2>
@@ -31,7 +42,7 @@
 							<p class="sale-info">Stating at: <b class="price">$225.00</b></p>
 							<a href="#" class="btn-link">Shop Now</a>
 						</div>
-					</div>
+					</div> --}}
 				</div>
 			</div>
 
