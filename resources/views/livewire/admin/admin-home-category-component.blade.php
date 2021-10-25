@@ -44,24 +44,26 @@
                         <div class="card-body">
                             @include('includes.msgshow')
                             <h5 class="card-title">Manage</h5>
-                            <form class="" wire:Submit.prevent="addSlide">
+                            <form class="" wire:Submit.prevent="updateHomeCategory">
                                 <div class="position-relative form-group">
                                     <label for="hcate" class="">Choose Categories</label>
-                                    <select id="hcate" name="categories[]" class="sel_categories form-control" multiple="multiple">
-                                        @foreach ($categories as $category )
-                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
-                                    </select>
+                                    <div  wire:ignore>
+                                        <select id="hcate" name="categories[]" class="sel_categories form-control" multiple="multiple" wire:model="selected_categories">
+                                            @foreach ($categories as $category )
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="nop" class="">No of Products</label>
-                                    <input id="nop" placeholder="Number of Products" type="text" class="form-control input-md" wire:model="title">
+                                    <input id="nop" placeholder="Number of Products" type="text" class="form-control input-md" wire:model="numberofproducts">
                                     @error('name') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                              
                                 <button type="submit" class="mt-1 btn btn-primary">Submit</button>
                             </form>
-                        </div>
+                        </div> 
                     </div>
                 <!--<div class="card widget-content bg-white">
                     <hr />
@@ -81,6 +83,10 @@
 <script>
 $(document).ready(function() {
     $('.sel_categories').select2();
+    $('.sel_categories').on('change', function(e){
+        var data = $('.sel_categories').select2("val");
+        @this.set('selected_categories',data);
+    });
 });
 </script>
 @endsection
