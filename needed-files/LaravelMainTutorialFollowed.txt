@@ -1,0 +1,8 @@
+//Laravel Blog Development 
+https://www.youtube.com/watch?v=itZ6DLBEnxE&list=PLl4v4A2HI0YixTm5AsoTu-sKxiQti4-r6 
+
+//Laravel ECOMMERCE
+https://www.youtube.com/watch?v=82gS1VHtF4A&list=PLz_YkiqIHesvPtvLl2Wz5FtuW44dBt199&index=6
+
+//Laravel and Vuejs project | Create a blog and forum from scratch
+https://www.youtube.com/watch?v=GcM0Ra6Xx1s&list=PLbzI0wCtFcqCd3Qv6KySgVf8z8Q1xAwHz
