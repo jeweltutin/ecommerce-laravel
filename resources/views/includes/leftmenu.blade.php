@@ -36,6 +36,12 @@
         </i>Manage Home Categories
     </a>
 </li>
+<li>
+    <a title="Manage Home Slider" href="{{ route('admin.sale') }}">
+        <i class="metismenu-icon pe-7s-eyedropper">
+        </i>Sale Setting
+    </a>
+</li>
 <li class="app-sidebar__heading">UI Components</li>
 <li>
     <a href="#">
