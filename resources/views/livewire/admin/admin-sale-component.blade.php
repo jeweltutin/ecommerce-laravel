@@ -30,8 +30,11 @@
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Sale Date</label>
-                        <div class="col-md-4">
+                        {{-- <div class="col-md-4">
                             <input type="text" id="sale-date" placeholder="YYYY/MM/DD H:M:S" class="form-control input-md" wire:model="sale_date">                                       
+                        </div> --}}
+                        <div class="col-md-4">
+                            <input type="datetime-local" id="sale-date" class="form-control input-md" wire:model="sale_date">
                         </div>
                     </div>
                      <div class="form-group">
@@ -59,29 +62,19 @@
 @endsection
 
 @section('script')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
-<script>
-/*$(function(){
+<script> 
+$(function () {
     $('#sale-date').datetimepicker({
-        format : "Y-MM-DD h:m:s",
-        /*format : "Y-MM-DD g:i a",
+        format: 'YYYY-MM-DD HH:mm',
+
     })
-    .on('dp.change', function(ev){
+    .on('dp.hide', function (ev) {
         var data = $('#sale-date').val();
         @this.set('sale_date', data);
     });
-});*/  
-$(function () {
-$('#sale-date').datetimepicker({
-    format: 'YYYY-MM-DD HH:mm',
-
-})
-.on('dp.hide', function (ev) {
-    var data = $('#sale-date').val();
-    @this.set('sale_date', data);
 });
-});
-</script>
+</script> --}}
 @endsection
