@@ -63,15 +63,25 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
 <script>
-$(function(){
+/*$(function(){
     $('#sale-date').datetimepicker({
         format : "Y-MM-DD h:m:s",
-        /*format : "Y-MM-DD g:i a",*/
+        /*format : "Y-MM-DD g:i a",
     })
     .on('dp.change', function(ev){
         var data = $('#sale-date').val();
         @this.set('sale_date', data);
     });
-});   
+});*/  
+$(function () {
+$('#sale-date').datetimepicker({
+    format: 'YYYY-MM-DD HH:mm',
+
+})
+.on('dp.hide', function (ev) {
+    var data = $('#sale-date').val();
+    @this.set('sale_date', data);
+});
+});
 </script>
 @endsection

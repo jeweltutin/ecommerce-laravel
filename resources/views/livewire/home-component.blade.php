@@ -62,22 +62,22 @@
                 </a>
             </div>
         </div>
-
         @php
-                date_default_timezone_set('Asia/Dhaka');
+                //date_default_timezone_set('Asia/Dhaka');
                 //$date1 = Carbon\Carbon::createFromFormat('m/d/Y H:i:s', '12/25/2021 10:20:00');
                 //$date2 = Carbon\Carbon::createFromFormat('m/d/Y H:i:s', '12/01/2020 10:20:00');
 
                 $timerdbsetdate = $saletimer->sale_date;
             
-                echo "DB set date :".$timerdbsetdate;
-                echo "</br>";
+                //echo "DB set date :".$timerdbsetdate;
+                //echo "</br>";
                 $currentdatetime =  Carbon\Carbon::now();
                 
-                echo "Current Date :".$currentdatetime;
-                $dbpargedate = Carbon\Carbon::parse($saletimer->sale_date)->format('Y/m/d h:m:s');
-                echo "</br>";
-                echo "Parse date: ".$dbpargedate;
+                //echo "Current Date :".$currentdatetime;
+                //$dbpargedate = Carbon\Carbon::parse($saletimer->sale_date)->format('Y/m/d h:m:s');
+                $expireDate = Carbon\Carbon::parse($saletimer->sale_date)->format('Y/m/d H:i:s');
+                //echo "</br>";
+                //echo "Parse date: ".$dbpargedate;
 
                 //$pdate = date('Y/m/d h:m:s', time());
 
@@ -94,9 +94,8 @@
         <!--On Sale-->
         @if(($saleproducts->count() > 0) && ($saletimer->status == 1) && ($result == TRUE))
         <div class="wrap-show-advance-info-box style-1 has-countdown">
-            <h3 class="title-box">On Sale</h3>
-            
-            <div class="wrap-countdown mercado-countdown" data-expire="{{ Carbon\Carbon::parse($saletimer->sale_date)->format('Y/m/d h:m:s') }}"></div>
+            <h3 class="title-box">On Sale</h3>          
+            <div class="wrap-countdown mercado-countdown" data-expire="{{ $expireDate }}"></div>
             {{-- <div class="wrap-countdown mercado-countdown" data-expire="2021/10/27 12:34:56"></div> --}}
             <div class="wrap-products slide-carousel owl-carousel style-nav-1 equal-container " data-items="5"
                 data-loop="false" data-nav="true" data-dots="false"
