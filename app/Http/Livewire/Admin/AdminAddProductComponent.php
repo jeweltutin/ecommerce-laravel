@@ -25,6 +25,18 @@ class AdminAddProductComponent extends Component
     public $image;
     public $category_id;
 
+    protected $rules = [
+         'name' => 'required',
+         'slug' => 'required|unique:products',
+         'short_description' => 'required',
+         'regular_price' => 'required|numeric',
+         'sale_price' => 'numeric',
+         'stock_status' => 'required',
+         'quantity' => 'required|numeric',
+         'image' => 'required|mimes:jpeg,png,jpg|max:2048',   //Maximaum 2MB size image
+         'category_id' => 'required'
+    ];
+
     public function mount(){
         $this->stock_status = 'instock';
         $this->featured = 0;
@@ -35,6 +47,8 @@ class AdminAddProductComponent extends Component
     }
 
     public function addProduct(){
+        $this->validate();
+        
         $product = new Product();
         $product->name = $this->name;
         $product->slug = $this->slug;

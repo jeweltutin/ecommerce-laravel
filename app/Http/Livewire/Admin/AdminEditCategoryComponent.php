@@ -15,7 +15,7 @@ class AdminEditCategoryComponent extends Component
 
     protected $rules = [
         'name' => 'required|min:3',
-        'slug' => 'required',
+        'slug' => 'required|unique:categories',
     ];
 
     public function mount($category_slug){

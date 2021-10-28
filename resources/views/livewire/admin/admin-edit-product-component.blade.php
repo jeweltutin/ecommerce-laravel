@@ -34,40 +34,38 @@
                                 <div class="position-relative form-group">
                                     <label for="pslug" class="">Product Slug</label>
                                     <input id="pslug" placeholder="Product Slug" type="text" wire:model="slug" class="form-control">
-                                    @error('slug') <span class="error">{{ $message }}</span> @enderror
+                                    @error('slug') <p class="text-danger">{{ $message }}</p> @enderror
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="psdesc" class="">Short Description</label>
                                     <textarea id="psdesc" class="form-control" placeholder="Short Description" wire:model="short_description"></textarea>
-                                    @error('slug') <span class="error">{{ $message }}</span> @enderror
+                                    @error('short_description') <p class="text-danger">{{ $message }}</p> @enderror
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="sdesc" class="">Description</label>
                                     <textarea id="sdesc" class="form-control" placeholder="Description"  wire:model="description"></textarea>
-                                    @error('slug') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                  <div class="position-relative form-group">
                                     <label for="rprice" class="">Regular Price</label>
                                     <input id="rprice" placeholder="Regular Price" type="text" wire:model="regular_price" class="form-control">
-                                    @error('slug') <span class="error">{{ $message }}</span> @enderror
+                                    @error('regular_price') <p class="text-danger">{{ $message }}</p> @enderror
                                 </div>
                                 <div class="position-relative form-group">
-                                    <label for="pslug" class="">Sale Price</label>
-                                    <input id="pslug" placeholder="Sale Price" type="text" wire:model="sale_price" class="form-control">
-                                    @error('slug') <span class="error">{{ $message }}</span> @enderror
+                                    <label for="slprice" class="">Sale Price</label>
+                                    <input id="slprice" placeholder="Sale Price" type="text" wire:model="sale_price" class="form-control">
+                                    @error('sale_price') <p class="text-danger">{{ $message }}</p> @enderror
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="sku" class="">SKU</label>
                                     <input id="sku" placeholder="SKU" type="text" wire:model="SKU" class="form-control">
-                                    @error('slug') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="sku" class="">Stock</label>
-                                    <select class="form-control" wirw:model="stock_status">
+                                    <select id="sku" class="form-control" wirw:model="stock_status">
                                         <option value="instock" selected>In Stock</option>
                                         <option value="outofstock">Out of Stock</option>
                                     </select>
-                                    @error('slug') <span class="error">{{ $message }}</span> @enderror
+                                    @error('stock_status') <p class="text-danger">{{ $message }}</p> @enderror
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="featured" class="">Featured</label>
@@ -75,12 +73,11 @@
                                         <option value="0" selected>No</option>
                                         <option value="1">Yes</option>
                                     </select>
-                                    @error('slug') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="qty" class="">Quantity</label>
                                     <input id="qty" placeholder="Quantity" type="text" wire:model="quantity" class="form-control">
-                                    @error('slug') <span class="error">{{ $message }}</span> @enderror
+                                    @error('quantity') <p class="text-danger">{{ $message }}</p> @enderror
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="pimage" class="">Product Image</label>
@@ -90,7 +87,7 @@
                                     @else
                                         <img src="{{ asset('assets/images/products') }}/{{$image}}" alt="" width="120">
                                     @endif
-                                    @error('slug') <span class="error">{{ $message }}</span> @enderror
+                                    @error('newimage') <p class="text-danger">{{ $message }}</p> @enderror
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="cat" class="">Category</label>
@@ -100,7 +97,7 @@
                                             <option value="{{ $category->id }}">{{ $category->name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('slug') <span class="error">{{ $message }}</span> @enderror
+                                    @error('category_id') <p class="text-danger">{{ $message }}</p> @enderror
                                 </div>
                                 <button type="submit" class="mt-1 btn btn-primary">Update</button>
                             </form>

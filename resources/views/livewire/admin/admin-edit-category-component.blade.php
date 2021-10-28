@@ -24,7 +24,7 @@
                             @if (Session::has('message'))
                                 <div class="alert alert-success fade show" role="alert">{{Session::get('message')}}</div>
                             @endif
-                            <h5 class="card-title">Add Category</h5>
+                            <h5 class="card-title">Edit Category</h5>
                             <form class="" wire:Submit.prevent="updateCategory">
                                 <div class="position-relative form-group">
                                     <label for="catname" class="">Category Name:</label>

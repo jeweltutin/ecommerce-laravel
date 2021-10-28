@@ -13,7 +13,7 @@ class AdminAddCategoryComponent extends Component
 
     protected $rules = [
         'name' => 'required|min:3',
-        'slug' => 'required',
+        'slug' => 'required|unique:categories',
     ];
 
     public function generateslug(){

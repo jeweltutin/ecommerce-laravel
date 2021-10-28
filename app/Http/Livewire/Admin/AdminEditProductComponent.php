@@ -27,6 +27,18 @@ class AdminEditProductComponent extends Component
     public $newimage;
     public $product_id;
 
+    protected $rules = [
+        'name' => 'required',
+        'slug' => 'required',
+        'short_description' => 'required',
+        'regular_price' => 'required|numeric',
+        'sale_price' => 'nullable|numeric',
+        'stock_status' => 'required',
+        'quantity' => 'required|numeric',
+        'newimage' => 'nullable|mimes:jpeg,png,jpg|max:2048',   //Maximaum 2MB size image
+        'category_id' => 'required'
+    ];
+
     public function mount($product_slug){
         $product = Product::where('slug', $product_slug)->first();
 
@@ -50,6 +62,7 @@ class AdminEditProductComponent extends Component
     }
 
     public function updateProduct(){
+        $this->validate();
         $product = Product::find($this->product_id);
 
         $product->name = $this->name;
@@ -57,7 +70,14 @@ class AdminEditProductComponent extends Component
         $product->short_description = $this->short_description;
         $product->description = $this->description;
         $product->regular_price = $this->regular_price;
-        $product->sale_price = $this->sale_price;
+        //dd($this->sale_price);
+        if($this->sale_price == "")
+        {
+            //dd("Working");
+            $product->sale_price = null;
+        }else{
+            $product->sale_price = $this->sale_price;
+        }        
         $product->SKU = $this->SKU;
         $product->stock_status = $this->stock_status;
         $product->featured = $this->featured;
