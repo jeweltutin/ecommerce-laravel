@@ -71,7 +71,7 @@
             
                 //echo "DB set date :".$timerdbsetdate;
                 //echo "</br>";
-                $currentdatetime =  Carbon\Carbon::now();
+                $currentdatetime =  Carbon\Carbon::now('Asia/Dhaka');
                 
                 //echo "Current Date :".$currentdatetime;
                 //$dbpargedate = Carbon\Carbon::parse($saletimer->sale_date)->format('Y/m/d h:m:s');

@@ -30,12 +30,12 @@
                     </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label">Sale Date</label>
-                        {{-- <div class="col-md-4">
-                            <input type="text" id="sale-date" placeholder="YYYY/MM/DD H:M:S" class="form-control input-md" wire:model="sale_date">                                       
-                        </div> --}}
                         <div class="col-md-4">
-                            <input type="datetime-local" id="sale-date" class="form-control input-md" wire:model="sale_date">
+                            <input type="text" id="sale-date" placeholder="YYYY/MM/DD H:M:S" class="form-control input-md" wire:model="sale_date">                                       
                         </div>
+                        {{-- <div class="col-md-4">
+                            <input type="datetime-local" id="sale-date" class="form-control input-md" wire:model="sale_date">
+                        </div> --}}
                     </div>
                      <div class="form-group">
                         <label class="col-md-4 control-label">Sale Date</label>
@@ -62,7 +62,7 @@
 @endsection
 
 @section('script')
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
 <script> 
@@ -76,5 +76,5 @@ $(function () {
         @this.set('sale_date', data);
     });
 });
-</script> --}}
+</script>
 @endsection
