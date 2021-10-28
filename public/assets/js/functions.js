@@ -41,7 +41,8 @@
     		if($(".product-gallery").length > 0){
     			$('.product-gallery').flexslider({
 					animation: "slide",
-					controlNav: "thumbnails"
+					controlNav: "thumbnails",
+					slideshow: false
 				});
 
 				var config = {

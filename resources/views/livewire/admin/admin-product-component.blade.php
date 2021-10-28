@@ -105,7 +105,7 @@
 <script>
 var id;
   function deleteConfirmationMsg(id) {
-      let confirmAction = confirm("Are you sure, You want to delete this Category?");
+      let confirmAction = confirm("Are you sure, You want to delete this Product?");
       if(confirmAction){
           //alert(id);
           return true;
