@@ -105,12 +105,14 @@
 <script>
 var id;
   function deleteConfirmationMsg(id) {
-      let confirmAction = confirm("Are You Sure to delete this");
+      let confirmAction = confirm("Are you sure, You want to delete this Category?");
       if(confirmAction){
-          alert(id);
+          //alert(id);
+          return true;
       }
       else{
-          return false;
+          //return false;
+          event.stopImmediatePropagation();
       }
       event.preventDefault();     
   }
