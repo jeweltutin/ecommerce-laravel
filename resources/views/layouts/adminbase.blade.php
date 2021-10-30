@@ -585,6 +585,7 @@
     </div>
     <script type="text/javascript" src="{{ asset('assets/scripts/main.js') }}"></script>
     @yield('script')
+    @stack('custom-scripts')
     @livewireScripts
 </body>
 

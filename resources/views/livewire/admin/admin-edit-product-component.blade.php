@@ -38,12 +38,16 @@
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="psdesc" class="">Short Description</label>
-                                    <textarea id="psdesc" class="form-control" placeholder="Short Description" wire:model="short_description"></textarea>
-                                    @error('short_description') <p class="text-danger">{{ $message }}</p> @enderror
+                                    <div wire:ignore>
+                                        <textarea id="short_description" class="form-control" placeholder="Short Description" rows="10" wire:model="short_description"></textarea>
+                                        @error('short_description') <p class="text-danger">{{ $message }}</p> @enderror
+                                    </div>
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="sdesc" class="">Description</label>
-                                    <textarea id="sdesc" class="form-control" placeholder="Description"  wire:model="description"></textarea>
+                                    <div wire:ignore>
+                                        <textarea id="description" class="form-control" placeholder="Description" rows="20" wire:model="description"></textarea>
+                                    </div>
                                 </div>
                                  <div class="position-relative form-group">
                                     <label for="rprice" class="">Regular Price</label>
@@ -110,3 +114,34 @@
         </div>
     </div>
 </div>
+@push('custom-scripts')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.tiny.cloud/1/qc7ks1e1hdcndnl9zf3ded1in47krz1nli1x9nqnynh7uapj/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+
+<script>
+$(function(){
+    tinymce.init({
+        selector: '#short_description',
+        setup:function(editor){
+            editor.on('Change',function(e){
+                tinyMCE.triggerSave();
+                var sd_data = $('#short_description').val();
+                @this.set('short_description', sd_data);
+            });
+        }
+    });
+
+    tinymce.init({
+    selector: '#description',
+        setup:function(editor){
+            editor.on('Change',function(e){
+                tinyMCE.triggerSave();
+                var d_data = $('#description').val();
+                @this.set('description', d_data);
+            });
+        }
+    });
+});
+
+</script>
+@endpush
