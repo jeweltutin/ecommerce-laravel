@@ -1,9 +1,7 @@
 <div>
 <!--main area-->
 <main id="main" class="main-site">
-
 <div class="container">
-
     <div class="wrap-breadcrumb">
         <ul>
             <li class="item-link"><a href="/" class="link">home</a></li>
@@ -11,7 +9,6 @@
         </ul>
     </div>
     <div class=" main-content-area">
-
         <div class="wrap-iten-in-cart">
             @if(Session::has('success_message'))
                 <div class="alert alert-success">
@@ -29,6 +26,11 @@
                         <div class="product-name">
                             <a class="link-to-product" href="{{ route('product.details', ['slug' => $item->model->slug]) }}">{{ $item->model->name }}</a>
                         </div>
+                        <div style="padding-top: 10px;" class="save-later">
+                            <p class="text-center">
+                                <a class="btn btn bg-info text-info" href="" wire:click.prevent="switchToSaveForLater('{{ $item->rowId }}')">Save for later</a>
+                            </p>
+                        </div>
                         <div class="price-field produtc-price"><p class="price">${{ $item->model->regular_price }}</p></div>
                         <div class="quantity">
                             <div class="quantity-input">
@@ -41,9 +43,9 @@
                         <div class="delete">
                             <a href="#" class="btn btn-delete" wire:click.prevent="destroy('{{ $item->rowId }}')" title="">
                                 <span>Delete from your cart</span>
-                                <i class="fa fa-times-circle" aria-hidden="true"></i>
+                                <i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
                             </a>
-                            <button type="button" wire:click="destroy('{{ $item->rowId }}')">Delete</button>
+                            {{-- <button type="button" wire:click="destroy('{{ $item->rowId }}')">Delete</button> --}}
                         </div>
                     </li>
                     @endforeach												
@@ -73,6 +75,45 @@
                 <a class="btn btn-update" href="#">Update Shopping Cart</a>
             </div>
         </div>
+
+        <div class="wrap-iten-in-cart">
+            <h3 class="box-title" style="border-bottom: 1px solid lightgreen; padding: 20px 0;">{{ Cart::instance('saveForLater')->count() }} item(s) Saved For Later</h3>
+            @if(Session::has('s_success_message'))
+                <div class="alert alert-success">
+                    <strong>Success</strong> {{ Session::get('s_success_message') }}
+                </div>
+            @endif
+            @if(Cart::instance('saveForLater')->count() > 0)
+                <ul class="products-cart">
+                    @foreach (Cart::instance('saveForLater')->content() as $item)
+                    <li class="pr-cart-item">
+                        <div class="product-image">
+                            <figure><img src="{{ asset('assets/images/products') }}/{{ $item->model->image }}" alt="{{ $item->model->name }}"></figure>
+                        </div>
+                        <div class="product-name">
+                            <a class="link-to-product" href="{{ route('product.details', ['slug' => $item->model->slug]) }}">{{ $item->model->name }}</a>
+                        </div>
+                        <div style="padding-top: 10px;" class="save-later">
+                            <p class="text-center">
+                                <a class="btn btn bg-info text-info" href="" wire:click.prevent="moveToCart('{{ $item->rowId }}')">Move To Cart</a>
+                            </p>
+                        </div>
+                        <div class="price-field produtc-price"><p class="price">${{ $item->model->regular_price }}</p></div>
+                        <div class="delete">
+                            <a href="#" class="btn btn-delete" wire:click.prevent="deleteFromSaveForLater('{{ $item->rowId }}')" title="">
+                                <span>Delete from save for later</span>
+                                <i class="fa fa-times-circle fa-2x" aria-hidden="true"></i>
+                            </a>
+                            {{-- <button type="button" wire:click="destroy('{{ $item->rowId }}')">Delete</button> --}}
+                        </div>
+                    </li>
+                    @endforeach												
+                </ul>
+                @else
+                    <p>No item saved for later</p>
+            @endif
+        </div>
+
 
         <div class="wrap-show-advance-info-box style-1 box-in-site">
             <h3 class="title-box">Most Viewed Products</h3>
