@@ -65,9 +65,7 @@
                                             @foreach(Cart::instance('wishlist')->content() as $item)
                                             <tr>
                                                 <td>
-                                                    <a href="#"
-                                                        wire:click.prevent="removeFromWishlist( {{ $item->model->id }} )"><i
-                                                            class="fa fa-close text-danger fa-2x"></i></a>
+                                                    <a href="#" wire:click.prevent="removeFromWishlist( {{ $item->model->id }} )"><i class="fa fa-close text-danger fa-2x"></i></a>
                                                 </td>
                                                 <td>
                                                     <a
@@ -81,9 +79,9 @@
                                                 </td>
                                                 <td>{{ $item->model->regular_price }}</td>
                                                 <td>{{ $item->model->stock_status }}</td>
-                                                <td><a href="" class="aa-add-to-cart-btn"
-                                                        wire:click.prevent="store( {{ $item->model->id }}, '{{ $item->model->name }}', {{ $item->model->regular_price }} )">Add
-                                                        To Cart</a></td>
+                                                <td>
+                                                    <a href="#" class="aa-add-to-cart-btn" wire:click.prevent="moveProductFromWishlistToCart( '{{ $item->rowId }}' )">Move To Cart</a>
+                                                </td>
                                             </tr>
                                             @endforeach
                                         </tbody>

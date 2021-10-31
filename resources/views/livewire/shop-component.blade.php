@@ -273,24 +273,29 @@
 @push('custom-scripts')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/15.5.0/nouislider.min.js" integrity="sha512-ZKqmaRVpwWCw7S7mEjC89jDdWRD/oMS0mlfH96mO0u3wrPYoN+lXmqvyptH4P9mY6zkoPTSy5U2SwKVXRY5tYQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-var slider = document.getElementById('pslider');
-noUiSlider.create(slider,{
-    start: [1,100],
-    connect:true,
-    range: {
-        'min':1,
-        'max':1000
-    },
-    pips: {
-        mode:'steps',
-        stepped:true,
-        density:4
-    }
-});
+$(document).ready(function() {
+    console.log("Ready!");
 
-slider.noUiSlider.on('update',function(value){
-    @this.set('min_price',value[0]);
-    @this.set('max_price',value[1]);
+    var slider = document.getElementById('pslider');
+    noUiSlider.create(slider,{
+        start: [1,100],
+        connect:true,
+        range: {
+            'min':1,
+            'max':1000
+        },
+        pips: {
+            mode:'steps',
+            stepped:true,
+            density:4
+        }
+    });
+
+
+    slider.noUiSlider.on('update',function(value){
+        @this.set('min_price',value[0]);
+        @this.set('max_price',value[1]);
+    });
 });
 </script>
 @endpush
