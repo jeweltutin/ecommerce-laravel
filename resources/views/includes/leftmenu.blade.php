@@ -23,6 +23,13 @@
         </i>All Products
     </a>
 </li>
+<li>
+    <a href="{{ route('admin.coupons') }}">
+        <i class="metismenu-icon pe-7s-mouse">
+        </i>All Coupons
+    </a>
+</li>
+
 <li class="app-sidebar__heading">Manage Home</li>
 <li>
     <a title="Manage Home Slider" href="{{ route('admin.homeslider') }}">
@@ -38,7 +45,7 @@
 </li>
 <li>
     <a title="Manage Home Slider" href="{{ route('admin.sale') }}">
-        <i class="metismenu-icon pe-7s-eyedropper">
+        <i class="metismenu-icon pe-7s-diamond">
         </i>Sale Setting
     </a>
 </li>
