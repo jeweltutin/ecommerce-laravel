@@ -30,6 +30,9 @@
                                 <th>Coupon Type</th>
                                 <th>Coupon Value</th>
                                 <th>Cart Value</th>
+                                <th>Status</th>
+                                <th>Usage Limit</th>
+                                <th>Expirity Date</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -45,6 +48,17 @@
                                             <td>{{ $coupon->value }}</td>
                                         @endif
                                         <td>{{ $coupon->cart_value }}</td>
+                                        @if($coupon->use_status == 0)
+                                            <td><div class="mb-2 mr-2 badge badge-success">New</div></td>
+                                        @else
+                                            <td><div class="mb-2 mr-2 badge badge-alternate">Used</div></td>
+                                        @endif
+                                        @if ($coupon->usage_limit == null || $coupon->usage_limit == '')
+                                            <td><div class="mb-2 mr-2 badge badge-pill badge-info">None</div></td>
+                                        @else
+                                            <td>{{ $coupon->usage_limit }}</td>
+                                        @endif
+                                        <td>{{ $coupon->expiry_date }}</td>
                                         <td>
                                             <a href="{{ route('admin.editcoupon', ['coupon_id' => $coupon->id]) }}"> <i class="fa fa-edit fa-2x"></i></a>
                                             <a href="" onclick="confirm('Are you sure, You want to delete this coupon?') || event.stopImmediatePropagation()" wire:click.prevent="deleteCoupon({{ $coupon->id }})" style="margin-left:10px;"> <i class="fa fa-times fa-1x text-danger fa-2x"></i></a>

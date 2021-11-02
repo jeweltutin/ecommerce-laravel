@@ -12,6 +12,8 @@ class AdminEditCouponComponent extends Component
     public $value;
     public $cart_value;
     public $coupon_id;
+    public $expiry_date;
+    public $usage_limit;
 
     public function mount($coupon_id){
         //dd($coupon_id);
@@ -20,21 +22,29 @@ class AdminEditCouponComponent extends Component
         $this->type = $coupon->type;
         $this->value = $coupon->value;
         $this->cart_value = $coupon->cart_value;
+        $this->expiry_date = $coupon->expiry_date;
+        $this->usage_limit = $coupon->usage_limit;
         $this->coupon_id = $coupon->id;
     }
     
     public function updateCoupon(){
         $this->validate([
-            'code' => 'required|unique:coupons',
+            'code' => 'required',
             'type' => 'required',
             'value' => 'required|numeric',
-            'cart_value' => 'required|numeric'
+            'cart_value' => 'required|numeric',
+            'expiry_date' => 'required'
         ]);
         $coupon = Coupon::find($this->coupon_id);
         $coupon->code = $this->code;
         $coupon->type = $this->type;
         $coupon->value = $this->value;
         $coupon->cart_value = $this->cart_value;
+        $coupon->expiry_date = $this->expiry_date;
+        if($this->usage_limit =='' OR $this->usage_limit == null)
+            $coupon->usage_limit = null;
+        else
+            $coupon->usage_limit = $this->usage_limit;
         $coupon->save();
         session()->flash('message', 'Coupon updated successfully');
     }

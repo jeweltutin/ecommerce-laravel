@@ -52,14 +52,49 @@
                                     @error('cart_value') <span class="error">{{ $message }}</span> @enderror
                                 </div>
 
+                                <div class="position-relative form-group">
+                                    <label for="exp-date" class="">Expiry Date</label>
+                                    <input id="exp-date" placeholder="Expiry Date" type="text" wire:model="expiry_date" class="form-control">
+                                    @error('expiry_date') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+
+                                <div class="position-relative form-group">
+                                    <label for="ulimit" class="">Usage limit</label>
+                                    <input id="ulimit" placeholder="Usage limit" type="number" wire:model="usage_limit" class="form-control">
+                                </div>
+
                                 <button type="submit" class="mt-1 btn btn-primary">Submit</button>
                             </form>
                         </div>
                     </div>
-                <!--<div class="card widget-content bg-white">
-                    <hr />
-                </div>-->
             </div>
         </div>
     </div>
 </div>
+@section('style')
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"> --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/css/bootstrap-datetimepicker.min.css">
+<style>
+.fade {
+    opacity: 1!important;
+}
+</style>
+@endsection
+
+@section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.7.14/js/bootstrap-datetimepicker.min.js"></script>
+<script> 
+$(function () {
+    $('#exp-date').datetimepicker({
+        format: 'YYYY-MM-DD',
+
+    })
+    .on('dp.hide', function (ev) {
+        var data = $('#exp-date').val();
+        @this.set('expiry_date', data);
+    });
+});
+</script>
+@endsection
