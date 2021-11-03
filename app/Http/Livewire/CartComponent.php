@@ -8,6 +8,7 @@ use Cart;
 use Session;
 use Carbon\Carbon;
 use DB;
+use Illuminate\support\Facades\Auth;
 
 class CartComponent extends Component
 {
@@ -103,6 +104,34 @@ class CartComponent extends Component
         session()->forget('coupon');
     }
 
+    public function checkout(){
+        if(Auth::check()){
+            return redirect()->route('checkout');
+        }
+        else{
+            return redirect()->route('login');
+        }
+    }
+
+    public function setAmountForCheckout(){
+        if(session()->has('coupon')){
+            session()->put('checkout',[
+                'discount' => $this->discount,
+                'subtotal' => $this->subtotalAfterDiscount,
+                'tax' => $this->taxAfterDiscount,
+                'total' => $this->totalAfterDiscount
+            ]);
+        }
+        else{
+            session()->put('checkout',[
+                'discount' => 0,
+                'subtotal' => Cart::instance('cart')->subtotal(),
+                'tax' => Cart::instance('cart')->tax(),
+                'total' => Cart::instance('cart')->total()
+            ]);
+        }
+    }
+
     public function render(){
         if(session()->has('coupon')){
             if(Cart::instance('cart')->subtotal() < session()->get('coupon')['cart_value']){
@@ -114,8 +143,9 @@ class CartComponent extends Component
         }
 
 
-        $cartitems = Cart::instance('cart')->content();
-        return view('livewire.cart-component', compact('cartitems'))->layout('layouts.base');
+        //$cartitems = Cart::instance('cart')->content();
+        $this->setAmountForCheckout();
+        return view('livewire.cart-component')->layout('layouts.base');
     }
 
 }
