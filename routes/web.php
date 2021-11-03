@@ -8,6 +8,7 @@ use App\Http\Livewire\CartComponent;
 use App\Http\Livewire\CheckoutComponent;
 use App\Http\Livewire\CategoryComponent;
 use App\Http\Livewire\WishListComponent;
+use App\Http\Livewire\ThankyouComponent;
 
 use App\Http\Livewire\user\UserDashboardComponent;
 use App\Http\Livewire\admin\AdminDashboardComponent;
@@ -46,10 +47,11 @@ use App\Http\Livewire\admin\AdminEditCouponComponent;
 Route::get('/', HomeComponent::class)->name('home');
 Route::get('/shop', ShopComponent::class);
 Route::get('/cart', CartComponent::class)->name('product.cart');
-Route::get('/checkout', CheckoutComponent::class);
+Route::get('/checkout', CheckoutComponent::class)->name('checkout');
 Route::get('/product/{slug}', ProductDetailsComponent::class)->name('product.details');
 Route::get('/product-category/{category_slug}', CategoryComponent::class)->name('product.category');
 Route::get('/wishlist', WishListComponent::class)->name('product.wishlist');
+Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
 
 /*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
