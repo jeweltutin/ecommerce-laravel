@@ -176,11 +176,15 @@
                 <h4 class="title-box f-title">Shipping method</h4>
                 <p class="summary-info"><span class="title">Flat Rate</span></p>
                 <p class="summary-info"><span class="title">Fixed $50.00</span></p>
+                @if (session()->has('coupon'))
+                    <p>Coupon code applied</p>
+                @else
                 <h4 class="title-box">Discount Codes</h4>
                 <p class="row-in-form">
                     <label for="coupon-code">Enter Your Coupon code:</label>
                     <input id="coupon-code" type="text" name="coupon-code" value="" placeholder="">	
                 </p>
+                @endif
                 <a href="#" class="btn btn-small">Apply</a>
             </div>
         </div>

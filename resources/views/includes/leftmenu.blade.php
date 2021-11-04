@@ -12,6 +12,12 @@
     </a>
 </li>
 <li>
+    <a title="Show All Orders" href="{{ route('admin.orders') }}">
+        <i class="metismenu-icon fa fa-cart-plus">
+        </i>All Orders
+    </a>
+</li>
+<li>
     <a href="{{ route('admin.categories') }}">
         <i class="metismenu-icon pe-7s-check">
         </i>Categories

@@ -6,6 +6,7 @@ use Livewire\Component;
 use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Transaction;
+use App\Models\Shipping;
 use Auth;
 use Cart;
 class CheckoutComponent extends Component
@@ -44,7 +45,7 @@ class CheckoutComponent extends Component
              'email' => 'required|email',
              'mobile' => 'required|numeric',
              'line1' => 'required',
-             'line2' => 'required',
+             //'line2' => 'required',
              'city' => 'required',
              'province' => 'required',
              'country' => 'required',
@@ -89,7 +90,7 @@ class CheckoutComponent extends Component
                 's_email' => 'required|email',
                 's_mobile' => 'required|numeric',
                 's_line1' => 'required',
-                's_line2' => 'required',
+                //'s_line2' => 'required',
                 's_city' => 'required',
                 's_province' => 'required',
                 's_country' => 'required',
