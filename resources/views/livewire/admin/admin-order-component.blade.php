@@ -37,6 +37,7 @@
                                 <th>Zipcode</th>
                                 <th>Status</th>
                                 <th>Order Date</th>
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -64,10 +65,10 @@
                                             <td><div class="mb-2 mr-2 badge badge-danger">{{$order->status}}</div></td>
                                         @endif
                                         <td>{{ $order->created_at }}</td>
-                                        {{-- <td>
-                                            <a href="{{ route('admin.editcoupon', ['coupon_id' => $coupon->id]) }}"> <i class="fa fa-edit fa-2x"></i></a>
-                                            <a href="" onclick="confirm('Are you sure, You want to delete this coupon?') || event.stopImmediatePropagation()" wire:click.prevent="deleteCoupon({{ $coupon->id }})" style="margin-left:10px;"> <i class="fa fa-times fa-1x text-danger fa-2x"></i></a>
-                                        </td>  --}}                                  
+                                        <td>
+                                            <a href="{{ route('admin.orderdetails', ['order_id' => $order->id]) }}"> <i class="fa fa-eye fa-2x"></i></a>
+                                            {{-- <a href="" onclick="confirm('Are you sure, You want to delete this coupon?') || event.stopImmediatePropagation()" wire:click.prevent="deleteCoupon({{ $coupon->id }})" style="margin-left:10px;"> <i class="fa fa-times fa-1x text-danger fa-2x"></i></a> --}}
+                                        </td>                                 
                                     </tr>
                                 @endforeach
                             </tbody>
