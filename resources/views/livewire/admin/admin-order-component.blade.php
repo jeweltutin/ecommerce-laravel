@@ -26,15 +26,15 @@
                             <thead>
                             <tr>
                                 <th width: 10px;>OrderId</th>
-                                <th>Subtotal</th>
+                                {{-- <th>Subtotal</th> --}}
                                 <th>Discount</th>
-                                <th>Tax</th>
+                                {{-- <th>Tax</th> --}}
                                 <th>Total</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
+                                <th>Name</th>
+                                {{-- <th>Last Name</th> --}}
                                 <th>Mobile</th>
                                 <th>Email</th>
-                                <th>Zipcode</th>
+                                {{-- <th>Zipcode</th> --}}
                                 <th>Status</th>
                                 <th>Order Date</th>
                                 <th>Action</th>
@@ -43,20 +43,20 @@
                             <tbody>
                                 @foreach ($orders as $order )
                                     <tr>
-                                        <th scope="row">{{ $order->id }}</th>
-                                        <td>৳ {{ $order->subtotal }}</td>
+                                        <th scope="row">#{{ $order->id }}</th>
+                                        {{-- <td>৳ {{ $order->subtotal }}</td> --}}
                                         @if ($order->discount != null AND $order->discount != '' AND $order->discount != 0)
                                             <td><div class="mb-2 mr-2 badge badge-info">{{$order->discount}}</div></td>
                                         @else
                                             <td><div class="mb-2 mr-2 badge badge-danger">N/A</div></td>
                                         @endif
-                                        <td>৳ {{ $order->tax }}</td>
+                                        {{-- <td>৳ {{ $order->tax }}</td> --}}
                                         <td><strong>৳ {{ $order->total }}</strong></td>
-                                        <td>{{ $order->firstname }}</td>
-                                        <td>{{ $order->lastname }}</td>
+                                        <td>{{ $order->firstname  }} {{ $order->lastname }}</td>
+                                        {{-- <td>{{ $order->lastname }}</td> --}}
                                         <td>{{ $order->mobile }}</td>
                                         <td>{{ $order->email }}</td>
-                                        <td>{{ $order->zipcode }}</td>
+                                        {{-- <td>{{ $order->zipcode }}</td> --}}
                                         @if($order->status == 'ordered')
                                             <td><div class="mb-2 mr-2 badge badge-primary">{{$order->status}}</div></td>
                                         @elseif($order->status == 'delivered')
