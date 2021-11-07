@@ -7,16 +7,46 @@
     </div>
     <div class="row">
         <div class="col-md-12">
+            @include('includes.msgshow')
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="row">
-                    <div class="col-md-6">
-                        <h5><strong>Ordered Items</strong></h5>
+                        <div class="col-md-6">
+                            <h5><strong>Order Details</strong></h5>
                         </div>
                         <div class="col-md-6">
                             <a href="{{ route('user.orders') }}" class="btn btn-success pull-right">My Orders</a>
+                            @if ($order->status == 'ordered')
+                                <a style="margin-right:10px" href="#" wire:click.prevent="cancelOrder" class="btn btn-warning pull-right">Cancel Order</a>
+                            @endif
                         </div>
                     </div>   
+                </div>
+                <div class="panel-body">
+                    <table class="mb-0 table table-striped table-responsive">
+                        <th>Order Id:</th>
+                        <td>{{ $order->id }}</td>
+                        <th>Order Date</th>
+                        <td>{{ $order->created_at }}</td>
+                        <th>Status</th>
+                        <td>{{ $order->status }}</td>
+                        @if ($order->status == 'delivered') 
+                            <th>Delivery Date</th>
+                            <td>{{ $order->delivered_date }}</td>
+                        @elseif($order->status == 'canceled')
+                            <th>Canceled Date</th>
+                            <td>{{ $order->delivered_date }}</td>
+                        @endif 
+                    </table>
+                </div>
+            </div>
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Ordered Items
                 </div>
                 <div class="panel-body">
 

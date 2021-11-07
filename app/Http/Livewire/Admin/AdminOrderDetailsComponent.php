@@ -9,6 +9,11 @@ use DB;
 class AdminOrderDetailsComponent extends Component
 {
     public $order_id;
+
+    public function mount($order_id){
+        $this->order_id = $order_id;
+        //dd($this->order_id);
+    } 
     
     public function updateOrderStatus($order_id, $status){
         $order = Order::find($order_id);
@@ -23,12 +28,6 @@ class AdminOrderDetailsComponent extends Component
         $order->save();
         session()->flash('order_message', 'Order status updated successfully');
     }
-    
-
-    public function mount($order_id){
-        $this->order_id = $order_id;
-        //dd($this->order_id);
-    } 
 
     public function render()
     {

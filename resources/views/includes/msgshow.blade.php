@@ -1,3 +1,3 @@
 @if (Session::has('message'))
-    <div class="alert alert-success fade show" role="alert">{{Session::get('message')}}</div>
+    <div class="alert alert-success alert-dismissible show" role="alert">{{Session::get('message')}}</div>
 @endif
