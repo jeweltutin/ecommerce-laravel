@@ -227,8 +227,10 @@
     border: 2px dotted;
 }
 .dropdown{
-    padding: 20px;
     text-align: center;
+}
+button.btn.btn-info {
+    margin-top: 20px;
 }
 </style>
 @endsection

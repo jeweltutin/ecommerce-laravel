@@ -22,10 +22,9 @@
                 <div class="main-card mb-3 card">
                     <div class="card-body"><h5 class="card-title">Order List</h5>
                         @include('includes.msgshow')
-                        <table class="mb-0 table table-striped table-responsive">
+                        <table class="mb-0 table table-striped">
                             <thead>
-                            <tr>
-                                <th width: 10px;>OrderId</th>
+                                <th>OrderId</th>
                                 {{-- <th>Subtotal</th> --}}
                                 <th>Discount</th>
                                 {{-- <th>Tax</th> --}}
@@ -38,7 +37,6 @@
                                 <th>Status</th>
                                 <th>Order Date</th>
                                 <th>Action</th>
-                            </tr>
                             </thead>
                             <tbody>
                                 @foreach ($orders as $order )

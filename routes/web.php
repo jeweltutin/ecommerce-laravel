@@ -11,6 +11,7 @@ use App\Http\Livewire\WishListComponent;
 use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\User\UserOrdersComponent;
 use App\Http\Livewire\User\UserOrderDetailsComponent;
+use App\Http\Livewire\SearchComponent;
 
 
 use App\Http\Livewire\user\UserDashboardComponent;
@@ -56,6 +57,7 @@ Route::get('/checkout', CheckoutComponent::class)->name('checkout');
 Route::get('/product/{slug}', ProductDetailsComponent::class)->name('product.details');
 Route::get('/product-category/{category_slug}', CategoryComponent::class)->name('product.category');
 Route::get('/wishlist', WishListComponent::class)->name('product.wishlist');
+Route::get('/search', SearchComponent::class)->name('product.search');
 Route::get('/thank-you', ThankyouComponent::class)->name('thankyou');
 
 /*Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
