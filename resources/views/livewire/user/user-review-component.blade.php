@@ -13,7 +13,7 @@
                                         <h4><strong class="woocommerce-review__author text-info">{{ $orderItem->product->name }}</strong></h4>
                                     </p>
                                     <div class="description">
-                                        <p>{{ $orderItem->product->short_description }}</p>
+                                        <p>{!! $orderItem->product->short_description !!}</p>
                                     </div>
                                 </div>
                             </div>
