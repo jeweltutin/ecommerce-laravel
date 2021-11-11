@@ -55,6 +55,12 @@
         </i>Sale Setting
     </a>
 </li>
+<li>
+    <a title="Manage Home Slider" href="{{ route('admin.productratingreview') }}">
+        <i class="metismenu-icon pe-7s-car">
+        </i>Product Rating Review
+    </a>
+</li>
 <li class="app-sidebar__heading">UI Components</li>
 <li>
     <a href="#">
