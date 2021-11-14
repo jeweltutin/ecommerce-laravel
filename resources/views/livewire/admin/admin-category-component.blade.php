@@ -1,5 +1,10 @@
 <div>
     <div class="app-main__inner">
+        @if ( Auth::user()->user_type == 'USR')
+            <p>{{ Auth::user()->name }}</p>
+        @else
+        <p>Not Working</p>
+        @endif
         <div class="app-page-title">
             <div class="page-title-wrapper">
                 <div class="page-title-heading">

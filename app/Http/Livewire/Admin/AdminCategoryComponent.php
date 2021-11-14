@@ -4,6 +4,7 @@ namespace App\Http\Livewire\Admin;
 
 use Livewire\Component;
 use App\Models\Category;
+use Auth;
 
 class AdminCategoryComponent extends Component
 {
@@ -15,7 +16,12 @@ class AdminCategoryComponent extends Component
     
     public function render()
     {
-        $categories = Category::paginate(5);
-        return view('livewire.admin.admin-category-component', compact('categories'))->layout('layouts.adminbase');
+        if ( Auth::user()->user_type == 'ADM'){
+            $categories = Category::paginate(5);
+            return view('livewire.admin.admin-category-component', compact('categories'))->layout('layouts.adminbase');
+        }
+        else{           
+            return view('livewire.access-denied-component')->layout('layouts.base');
+        }
     }
 }

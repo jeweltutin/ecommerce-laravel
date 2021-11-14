@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
 
 class AuthAdmin
 {
@@ -16,7 +17,7 @@ class AuthAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(session('user_type') === 'ADM'){
+        if(Auth::user()->utype === 'ADM'){
             return $next($request);
         }
         else{
