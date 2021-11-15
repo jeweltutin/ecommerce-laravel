@@ -36,7 +36,13 @@
     </a>
 </li>
 
-<li class="app-sidebar__heading">Manage Home</li>
+<li class="app-sidebar__heading">Manage</li>
+<li>
+    <a title="Manage Users" href="{{ route('admin.users') }}">
+        <i class="metismenu-icon fa fa-user">
+        </i>Manage Users
+    </a>
+</li>
 <li>
     <a title="Manage Home Slider" href="{{ route('admin.homeslider') }}">
         <i class="metismenu-icon pe-7s-graph2">
@@ -44,19 +50,19 @@
     </a>
 </li>
 <li>
-    <a title="Manage Home Slider" href="{{ route('admin.homecategories') }}">
+    <a title="Manage Home Categories" href="{{ route('admin.homecategories') }}">
         <i class="metismenu-icon pe-7s-eyedropper">
         </i>Manage Home Categories
     </a>
 </li>
 <li>
-    <a title="Manage Home Slider" href="{{ route('admin.sale') }}">
+    <a title="Manage Sale" href="{{ route('admin.sale') }}">
         <i class="metismenu-icon pe-7s-diamond">
         </i>Sale Setting
     </a>
 </li>
 <li>
-    <a title="Manage Home Slider" href="{{ route('admin.productratingreview') }}">
+    <a title="Manage Product ratings review" href="{{ route('admin.productratingreview') }}">
         <i class="metismenu-icon pe-7s-car">
         </i>Product Rating Review
     </a>

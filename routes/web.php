@@ -35,6 +35,8 @@ use App\Http\Livewire\admin\AdminEditCouponComponent;
 use App\Http\Livewire\admin\AdminOrderComponent; 
 use App\Http\Livewire\admin\AdminOrderDetailsComponent; 
 use App\Http\Livewire\admin\AdminProductRatingReviewComponent; 
+use App\Http\Livewire\admin\AdminUserComponent; 
+use App\Http\Livewire\admin\AdminUserManageComponent; 
 
 /*
 |--------------------------------------------------------------------------
@@ -101,4 +103,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/admin/order/{order_id}', AdminOrderDetailsComponent::class)->name('admin.orderdetails');
 
     Route::get('/admin/product/rating-review', AdminProductRatingReviewComponent::class)->name('admin.productratingreview');
+
+    Route::get('/admin/users', AdminUserComponent::class)->name('admin.users');
+    Route::get('/admin/user/manage/{user_id}', AdminUserManageComponent::class)->name('admin.usermanage');
 });

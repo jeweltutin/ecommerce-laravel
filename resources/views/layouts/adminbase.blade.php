@@ -16,8 +16,8 @@
 </head>
 
 <body>
-@if ( Auth::user()->user_type == 'ADM')
-            <p>{{ Auth::user()->name }}</p>
+{{-- @if ( Auth::user()->user_type == 'ADM')
+            <p>{{ Auth::user()->name }}</p> --}}
 
     <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
         <div class="app-header header-shadow">
@@ -584,9 +584,9 @@
             </div>
             <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
         </div>
-        @else
+        {{-- @else
         <p class="container text-danger">Access Denied, You Don’t Have Permission To Access this page</p>
-        @endif
+        @endif --}}
     </div>
     <script type="text/javascript" src="{{ asset('assets/scripts/main.js') }}"></script>
     @yield('script')
