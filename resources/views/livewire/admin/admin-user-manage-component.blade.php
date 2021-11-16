@@ -22,17 +22,20 @@
                     <div class="main-card mb-3 card">
                         <div class="card-body">
                             @if (Session::has('message'))
-                                <div class="alert alert-success fade show" role="alert">{{Session::get('message')}}</div>
+                                <div class="alert alert-danger fade show" role="alert">{{Session::get('message')}}</div>
+                            @endif
+                            @if (Session::has('smessage'))
+                                <div class="alert alert-success fade show" role="alert">{{Session::get('smessage')}}</div>
                             @endif
                             <h5 class="card-title">User Manage</h5>
                             <form class="" wire:submit.prevent="updateUserAccount">
                                 <div class="position-relative form-group">
                                     <label for="uname" class="">User Name:</label>
-                                    <input id="uname" wire:model="name" placeholder="Name" type="text" class="form-control">
+                                    <input id="uname" wire:model="name" placeholder="Name" type="text" class="form-control" readonly>
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="uemail" class="">Email</label>
-                                    <input id="uemail" placeholder="Email" type="text" wire:model="email" class="form-control">
+                                    <input id="uemail" placeholder="Email" type="text" wire:model="email" class="form-control" readonly>
                                     @error('email') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="position-relative form-group">
@@ -47,7 +50,7 @@
                                         <option value="SBSCRBR">Subscriber</option>
                                         <option value="USR">User</option>
                                     </select>
-                                    @error('type') <span class="error">{{ $message }}</span> @enderror
+                                    @error('role') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="position-relative form-group">
                                         <label for="npasswd" class="">New Password</label>

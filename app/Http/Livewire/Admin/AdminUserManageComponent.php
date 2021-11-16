@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Admin;
 use Livewire\Component;
 use App\Models\User;
 use Auth;
+use Hash;
 
 class AdminUserManageComponent extends Component
 {
@@ -27,18 +28,25 @@ class AdminUserManageComponent extends Component
             //dd(Auth::user()->user_type);
             $user = User::find($this->user_id);
             //dd($user->name);
-            if($this->newpasswd != "" || $this->newpasswd != null){
-                dd($this->newpasswd);
+            if($this->role != "" || $this->role != null ){
+                $user->user_type = $this->role;
+                $user->save();
+                session()->flash('smessage', 'User role updated successfully');
             }
-            dd("Blank");
-            $user->password = $this->newpasswd;
-            $user->password = Hash::make($this->password);
-            $user->save();
-            session()->flash('message', 'Password has been changed successfully ');
-            return redirect('/');
+
+            if($this->newpasswd != "" || $this->newpasswd != null ){
+                if ($this->password_confirmation === $this->newpasswd) {
+                    $user->password = Hash::make($this->newpasswd);
+                    $user->save();
+                    session()->flash('smessage', 'Password has been changed successfully ');
+                }
+                else{
+                    session()->flash('message', 'Failed!! Check the field is empty or password does not match');
+                }
+            }
         }
         else{
-            session()->flash('message', 'Password does not match');
+            session()->flash('message', "You don't have permission to do this action !!");
         }
     }
 
