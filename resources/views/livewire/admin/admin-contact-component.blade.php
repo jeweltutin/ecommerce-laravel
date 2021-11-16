@@ -14,10 +14,7 @@
         <div class="row" style="padding-top:15px;">
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
-                    <div class="card-body"><h5 class="card-title">Users List</h5>
-                        @if (Session::has('smessage'))
-                            <div class="alert alert-success fade show" role="alert">{{Session::get('smessage')}}</div>
-                        @endif
+                    <div class="card-body"><h5 class="card-title">Messages List</h5>
                         @if (Session::has('message'))
                             <div class="alert alert-danger fade show" role="alert">{{Session::get('message')}}</div>
                         @endif

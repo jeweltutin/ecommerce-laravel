@@ -5,7 +5,7 @@
                     <div class="card-header">
                         Contact Messages
                     <div class="btn-actions-pane-right">
-                        <a href="{{ route('admin.dashboard') }}" class="btn btn-success pull-right">Dashboard</a>
+                        <a href="{{ route('admin.contact') }}" class="btn btn-success pull-right">All Contact Messages</a>
                     </div>                 
             </div></div>                              
         </div>

@@ -11,12 +11,12 @@ class AdminContactComponent extends Component
     public function deleteComment($comment_id){
         $comment = Contact::find($comment_id);
         $comment->delete();
-        session()->flash('message','This comment deleted Successfully');
+        session()->flash('message','This Contact Message deleted Successfully');
     }
 
     public function deleteAllComment(){
         Contact::whereNotNull('id')->delete();
-        session()->flash('message','All comments deleted Successfully');
+        session()->flash('message','All Contact Messages deleted Successfully');
     }
 
     public function render()
