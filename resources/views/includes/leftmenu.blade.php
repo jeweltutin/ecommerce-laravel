@@ -35,6 +35,12 @@
         </i>All Coupons
     </a>
 </li>
+<li>
+    <a title="Contact Messages" href="{{ route('admin.contact') }}">
+        <i class="metismenu-icon fa fa-envelope" aria-hidden="true">
+        </i>Contact Messages
+    </a>
+</li>
 
 <li class="app-sidebar__heading">Manage</li>
 <li>
