@@ -47,8 +47,8 @@
                                         <td>{{ Str::limit($contact->comment, 50,' ...') }}</td>
                                         <td>{{ $contact->created_at }}</td>
                                         <td>
-                                            {{-- <a href="{{ route('admin.usermanage', ['user_id' => $user->id]) }}"> <i class="fa fa-edit fa-1x text-info"></i></a> --}}
-                                            <a  onclick="deleteConfirmationMsg();" href="" wire:click.prevent="deleteComment({{ $contact->id }})" style="margin-left:10px;"> <i class="fa fa-times fa-1x text-danger"></i></a> 
+                                            <a href="{{ route('admin.contactdetails', ['contact_id' => $contact->id]) }}"> <i class="fa fa-eye fa-2x"></i></a>
+                                            <a  onclick="deleteConfirmationMsg();" href="" wire:click.prevent="deleteComment({{ $contact->id }})" style="margin-left:10px;"> <i class="fa fa-times fa-2x text-danger"></i></a> 
                                         </td>                        
                                     </tr>
                                 @endforeach
@@ -57,6 +57,7 @@
                         
                     </div>
                     <div style="padding: 20px;" class="col-md-4">
+                        <p class="text-danger">*Note: This will delete all messages by one click</p>
                         <button class="mb-2 mr-2 btn btn-danger" onclick="deleteConfirmationMsg()" wire:click.prevent="deleteAllComment">Delete All</button>
                     </div>
                 </div>

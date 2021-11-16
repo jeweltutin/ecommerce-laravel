@@ -41,6 +41,7 @@ use App\Http\Livewire\admin\AdminProductRatingReviewComponent;
 use App\Http\Livewire\admin\AdminUserComponent; 
 use App\Http\Livewire\admin\AdminUserManageComponent; 
 use App\Http\Livewire\admin\AdminContactComponent; 
+use App\Http\Livewire\admin\AdminContactDetailsComponent; 
 
 /*
 |--------------------------------------------------------------------------
@@ -113,4 +114,5 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/admin/user/manage/{user_id}', AdminUserManageComponent::class)->name('admin.usermanage');
 
     Route::get('/admin/contact-us', AdminContactComponent::class)->name('admin.contact');
+    Route::get('/admin/contact-details/{contact_id}', AdminContactDetailsComponent::class)->name('admin.contactdetails');
 });
