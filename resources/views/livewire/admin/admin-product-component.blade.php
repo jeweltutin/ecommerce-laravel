@@ -81,7 +81,8 @@
                                         <td>{{ $product->category->name }}</td>
                                         <td>{{ $product->created_at }}</td>
                                         <td>
-                                            <a href="{{ route('admin.editproduct', ['product_slug' => $product->slug]) }}"> <i class="fa fa-edit fa-1x text-info"></i></a>
+                                            <a href="{{ route('admin.productdetails', ['product_id' => $product->id]) }}"> <i class="fa fa-eye fa-1x text-info"></i></a>
+                                            <a style="margin-left:10px;" href="{{ route('admin.editproduct', ['product_slug' => $product->slug]) }}"> <i class="fa fa-edit fa-1x text-info"></i></a>
                                             <a onclick="deleteConfirmationMsg({{ $product->id }});" href="" wire:click.prevent="deleteProduct({{ $product->id }})" style="margin-left:10px;"> <i class="fa fa-times fa-1x text-danger"></i></a>
                                         </td>                               
                                     </tr>
