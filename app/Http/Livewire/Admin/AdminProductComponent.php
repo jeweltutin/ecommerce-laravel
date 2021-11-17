@@ -9,6 +9,16 @@ class AdminProductComponent extends Component
 {
     public function deleteProduct($id){
         $product = Product::find($id);
+        $images = explode(",", $product->images);
+
+        foreach ($images as $image ){
+            if ($image){
+                if(file_exists(public_path('assets/images/products/'. $image))){
+                    unlink(public_path('assets/images/products/'. $image));
+                }           
+            }             
+        }
+
         if(file_exists(public_path('assets/images/products/'. $product->image))){
             //dd('Found');
             unlink(public_path('assets/images/products/'. $product->image));

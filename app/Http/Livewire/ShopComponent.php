@@ -21,7 +21,7 @@ class ShopComponent extends Component
         $this->pagesize = 12;
 
         $this->min_price = 1;
-        $this->max_price = 100000;
+        $this->max_price = 50000;
     }
 
     public function store($product_id, $product_name, $product_price){
