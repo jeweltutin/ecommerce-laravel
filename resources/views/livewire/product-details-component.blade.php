@@ -20,34 +20,16 @@
                                 <img src="{{ asset('assets/images/products/') }}/{{ $product->image }}" alt="{{$product->name}}" />
                             </li>
 
-                            <li data-thumb="{{ asset('assets/images/products/digital_17.jpg') }}">
-                                <img src="{{ asset('assets/images/products/digital_17.jpg') }}" alt="product thumbnail" />
-                            </li>
-
-                            <li data-thumb="{{ asset('assets/images/products/digital_15.jpg') }}">
-                                <img src="{{ asset('assets/images/products/digital_15.jpg') }}" alt="product thumbnail" />
-                            </li>
-
-                            <li data-thumb="{{ asset('assets/images/products/digital_2.jpg') }}">
-                                <img src="{{ asset('assets/images/products/digital_2.jpg') }}" alt="product thumbnail" />
-                            </li>
-
-                            <li data-thumb="{{ asset('assets/images/products/digital_8.jpg') }}">
-                                <img src="{{ asset('assets/images/products/digital_8.jpg') }}" alt="product thumbnail" />
-                            </li>
-
-                            <li data-thumb="{{ asset('assets/images/products/digital_10.jpg') }}">
-                                <img src="{{ asset('assets/images/products/digital_10.jpg') }}" alt="product thumbnail" />
-                            </li>
-
-                            <li data-thumb="{{ asset('assets/images/products/digital_12.jpg') }}">
-                                <img src="{{ asset('assets/images/products/digital_12.jpg') }}" alt="product thumbnail" />
-                            </li>
-
-                            <li data-thumb="{{ asset('assets/images/products/digital_14.jpg') }}">
-                                <img src="{{ asset('assets/images/products/digital_14.jpg') }}" alt="product thumbnail" />
-                            </li>
-
+                            @php
+                                $images = explode(",", $product->images);
+                            @endphp
+                            @foreach ($images as $image )
+                                @if ($image)
+                                    <li data-thumb="{{ asset('assets/images/products') }}/{{  $image }}">
+                                        <img src="{{ asset('assets/images/products') }}/{{  $image }}" alt="{{$product->name}}" />
+                                    </li>   
+                                @endif              
+                            @endforeach
                             </ul>
                         </div>
                     </div>
