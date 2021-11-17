@@ -62,17 +62,25 @@
     </a>
 </li>
 <li>
+    <a title="Manage Product ratings review" href="{{ route('admin.productratingreview') }}">
+        <i class="metismenu-icon pe-7s-car">
+        </i>Product Rating Review
+    </a>
+</li>
+<li class="app-sidebar__heading">Settings</li>
+<li>
     <a title="Manage Sale" href="{{ route('admin.sale') }}">
         <i class="metismenu-icon pe-7s-diamond">
         </i>Sale Setting
     </a>
 </li>
 <li>
-    <a title="Manage Product ratings review" href="{{ route('admin.productratingreview') }}">
-        <i class="metismenu-icon pe-7s-car">
-        </i>Product Rating Review
+    <a title="Settings" href="{{ route('admin.settings') }}">
+        <i class="metismenu-icon fa fa-cog">
+        </i>Settings
     </a>
 </li>
+
 <li class="app-sidebar__heading">UI Components</li>
 <li>
     <a href="#">

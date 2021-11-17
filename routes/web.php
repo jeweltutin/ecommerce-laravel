@@ -43,6 +43,7 @@ use App\Http\Livewire\admin\AdminUserComponent;
 use App\Http\Livewire\admin\AdminUserManageComponent; 
 use App\Http\Livewire\admin\AdminContactComponent; 
 use App\Http\Livewire\admin\AdminContactDetailsComponent; 
+use App\Http\Livewire\admin\AdminSettingComponent; 
 
 /*
 |--------------------------------------------------------------------------
@@ -118,4 +119,6 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
 
     Route::get('/admin/contact-us', AdminContactComponent::class)->name('admin.contact');
     Route::get('/admin/contact-details/{contact_id}', AdminContactDetailsComponent::class)->name('admin.contactdetails');
+
+    Route::get('/admin/settings', AdminSettingComponent::class)->name('admin.settings');
 });
