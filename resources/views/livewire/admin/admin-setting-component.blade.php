@@ -32,39 +32,48 @@
                                  <div class="position-relative form-group">
                                     <label for="phone" class="">Phone</label>
                                     <input id="phone" placeholder="phone" type="text" class="form-control" wire:model="phone">
+                                    @error('phone') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="phone2" class="">Phone2</label>
                                     <input id="phone2" placeholder="phone2" type="text" class="form-control" wire:model="phone2">
+                                    @error('phone2') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="address" class="">Address</label>
                                     <input id="address" placeholder="Address" type="text" class="form-control" wire:model="address">
+                                    @error('address') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="map" class="">Map</label>
                                     <input id="map" placeholder="Map" type="text" class="form-control" wire:model="map">
+                                    @error('map') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 
                                 <div class="position-relative form-group">
                                     <label for="twitter" class="">Twitter</label>
                                     <input id="twitter" placeholder="Twitter" type="text" class="form-control" wire:model="twitter">
+                                    @error('twitter') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="facebook" class="">Facebook</label>
                                     <input id="facebook" placeholder="Facebook" type="text" class="form-control" wire:model="facebook">
+                                    @error('facebook') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="instagram" class="">Instagram</label>
                                     <input id="instagram" placeholder="Instagram" type="text" class="form-control" wire:model="instagram">
+                                    @error('instagram') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="pinterest" class="">Pinterest</label>
                                     <input id="pinterest" placeholder="Pinterest" type="text" class="form-control" wire:model="pinterest">
+                                    @error('pinterest') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="position-relative form-group">
                                     <label for="youtube" class="">Youtube</label>
                                     <input id="youtube" placeholder="Youtube" type="text" class="form-control" wire:model="youtube">
+                                    @error('youtube') <span class="error">{{ $message }}</span> @enderror
                                 </div>
 
                                 <button type="submit" class="mt-1 btn btn-primary">Save</button>
