@@ -33,7 +33,7 @@
     </x-jet-authentication-card>
 </x-guest-layout> --}}
 
-<x-guest-layout>
+<x-base-layout>
 	<!--main area-->
 	<style>
 		.loginlogo {
@@ -92,4 +92,4 @@
 		</div><!--end container-->
 
 	</main>
-</x-guest-layout>
+</x-base-layout>

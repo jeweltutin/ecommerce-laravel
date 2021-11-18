@@ -60,7 +60,7 @@
 </x-guest-layout>
  --}}
 
-<x-guest-layout>
+<x-base-layout>
 <!--main area-->
 <style>
 	.loginlogo {
@@ -131,4 +131,4 @@
 	</main>
 	<!--main area-->
 
-</x-guest-layout>
+</x-base-layout>
