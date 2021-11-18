@@ -171,11 +171,11 @@
                                 <td><strong>৳ {{ $order->total }}</strong></td>
                                 @if($order->status == 'ordered')
                                 <td class="text-center">
-                                    <div class="badge badge-success">{{$order->status}}</div>
+                                    <div class="badge badge-info">{{$order->status}}</div>
                                 </td>
                                 @elseif($order->status == 'delivered')
                                 <td class="text-center">
-                                    <div class="badge badge-warning">{{$order->status}}</div>
+                                    <div class="badge badge-success">{{$order->status}}</div>
                                 </td>
                                 @else
                                 <td class="text-center">
