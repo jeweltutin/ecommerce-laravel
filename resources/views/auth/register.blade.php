@@ -62,10 +62,17 @@
 
 <x-guest-layout>
 <!--main area-->
+<style>
+	.loginlogo {
+		text-align: center;
+		padding-bottom: 20px;
+	}
+	.loginlogo img{
+		width: 250px;
+	}
+</style>
 	<main id="main" class="main-site left-sidebar">
-
 		<div class="container">
-
 			<div class="wrap-breadcrumb">
 				<ul>
 					<li class="item-link"><a href="/" class="link">home</a></li>
@@ -75,6 +82,9 @@
 			<div class="row">
 				<div class="col-lg-6 col-sm-6 col-md-6 col-xs-12 col-md-offset-3">							
 					<div class=" main-content-area">
+						<div class="loginlogo">
+							<img src="{{ asset('assets/images/login-logo.png') }}" alt="logo">
+						</div>
 						<div class="wrap-login-item ">
 							<div class="register-form form-item ">
                             <x-jet-validation-errors class="mb-4" />
