@@ -68,7 +68,7 @@
 <script>
 var id;
   function deleteConfirmationMsg() {
-      let confirmAction = confirm("Are you sure, You want to delete this Rating and Review?");
+      let confirmAction = confirm("Are you sure, You want to delete this User?");
       if(confirmAction){
           return true;
       }
