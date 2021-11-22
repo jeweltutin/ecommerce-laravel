@@ -1,25 +1,27 @@
 <div>
     <div class="app-main__inner">
         <div class="row "> 
-            <div class="card-shadow-primary mb-1 card card-body">
-                <div class="wrap-breadcrumb">
-                    <ul>
-                        <li class="item-link"><a href="{{ route('admin.products') }}" class="link">Product</a></li>
-                        <li class="item-link"><span>Add</span></li>
-                    </ul>
-                </div>
-                  
-                <div class="card-header">
-                    Add New Product
-                <div class="btn-actions-pane-right">
-                    <a href="{{ route('admin.products') }}" class="btn btn-success pull-right">All Products</a>
-                </div>                 
-                </div>
-            </div>                              
+            <div class="col-md-12">
+                <div class="card-shadow-primary mb-1 card card-body">
+                    <div class="wrap-breadcrumb">
+                        <ul>
+                            <li class="item-link"><a href="{{ route('admin.products') }}" class="link">Product</a></li>
+                            <li class="item-link"><span>Add</span></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="card-header">
+                        Add New Product
+                    <div class="btn-actions-pane-right">
+                        <a href="{{ route('admin.products') }}" class="btn btn-success pull-right">All Products</a>
+                    </div>                 
+                    </div>
+                </div> 
+            </div>                             
         </div>
         <div class="row justify-content-center">
-            <div class="card-shadow-primary mb-3 card card-body">
-                <div class="col-md-12">
+            <div class="col-md-9">
+                <div class="card-shadow-primary mb-3 card card-body">
                 @if (Session::has('message'))
                     <div class="alert alert-success fade show" role="alert">{{Session::get('message')}}</div>
                 @endif
@@ -50,8 +52,8 @@
                     </div>
                 </div>
             </div>
-            <div class="card-shadow-primary mb-3 card card-body" style="padding: 48px 0 5px 0;">
-                <div class="col-md-12">
+            <div class="col-md-3">
+                <div class="card-shadow-primary mb-3 card card-body">
                     <div class="position-relative form-group">
                         <label for="rprice" class="">Regular Price</label>
                         <input id="rprice" placeholder="Regular Price" type="text" wire:model="regular_price" class="form-control">
@@ -97,6 +99,15 @@
                         </select>
                         @error('category_id') <p class="text-danger">{{ $message }}</p> @enderror
                     </div>
+                    <div class="position-relative form-group">
+                        <label for="pimage" class="">Product Image</label>
+                        <input id="pimage" placeholder="Product Image" type="file" wire:model="image" class="input-file">
+                        @if($image)
+                            <img src="{{ $image->temporaryUrl() }}" width="120">
+                        @endif
+                        @error('image') <p class="text-danger">{{ $message }}</p> @enderror
+                    </div>
+                    <button style="width: 200px" type="submit" class="mt-1 btn btn-primary">Submit</button>
                 </div>
             </div>
                 <!--<div class="card widget-content bg-white">
@@ -105,15 +116,8 @@
 
         </div>
         <div class="row">
+            <div class="col-md-12">
             <div class="card-shadow-primary mb-1 card card-body">
-                <div class="position-relative form-group">
-                    <label for="pimage" class="">Product Image</label>
-                    <input id="pimage" placeholder="Product Image" type="file" wire:model="image" class="input-file">
-                    @if($image)
-                        <img src="{{ $image->temporaryUrl() }}" width="120">
-                    @endif
-                    @error('image') <p class="text-danger">{{ $message }}</p> @enderror
-                </div>
                 <div class="position-relative form-group">
                     <h6><label for="igalry" class="">Product Gallery</label></h6>
                     <input id="igalry" placeholder="Product Gallery" type="file" wire:model="images" class="input-file" multiple>
@@ -124,8 +128,8 @@
                     @endif
                     @error('images') <p class="text-danger">{{ $message }}</p> @enderror
                 </div>
-                <button style="width: 200px" type="submit" class="mt-1 btn btn-primary">Submit</button>
             </form>
+            </div>
             </div>
         </div>
         
