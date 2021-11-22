@@ -93,6 +93,28 @@
                                     @endif
                                     @error('newimage') <p class="text-danger">{{ $message }}</p> @enderror
                                 </div>
+
+                                <div class="position-relative form-group">
+                                    <label for="pimages" class="">Product Gallery</label>
+                                    <input id="pimages" type="file" wire:model="newimages" class="input-file" multiple>
+                                    @if($newimages)
+                                        @foreach ($newimages as $newimage )
+                                            @if ($newimage)
+                                            <img src="{{ $newimage->temporaryUrl() }}" width="120">
+                                            @endif
+                                        @endforeach
+                                    @else
+                                    <p>
+                                        @foreach ($images as $image)
+                                            @if ($image)
+
+                                                <img src="{{ asset('assets/images/products') }}/{{$image}}" alt="" width="120">
+                                            @endif
+                                        @endforeach
+                                    </p>
+                                    @endif
+                                </div>
+
                                 <div class="position-relative form-group">
                                     <label for="cat" class="">Category</label>
                                     <select id="cat" class="form-control" wire:model="category_id">
