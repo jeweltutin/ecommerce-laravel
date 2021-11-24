@@ -43,9 +43,11 @@ class ProductDetailsComponent extends Component
         if (Cart::instance('buyNowCart')->count() > 0){
             Cart::instance('buyNowCart')->destroy();
         }
-        Cart::instance('buyNowCart')->add($product_id, $product_name, $this->qty, $product_price)->associate('App\Models\Product');
-        session()->flash('success_message', 'Item added in Cart');
-        return redirect()->route('checkout.buynow');
+        else{
+            Cart::instance('buyNowCart')->add($product_id, $product_name, $this->qty, $product_price)->associate('App\Models\Product');
+            session()->flash('success_message', 'Item added in Cart');
+            return redirect()->route('checkout.buynow');
+        }
     }
 
     public function render()
