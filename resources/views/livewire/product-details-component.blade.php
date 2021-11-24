@@ -113,6 +113,8 @@
                                 <a href="#" class="btn add-to-cart"  wire:click.prevent="store( {{ $product->id }}, '{{ $product->name }}', {{$product->sale_price}} )">Add to Cart</a>
                             @else
                                 <a href="#" class="btn add-to-cart"  wire:click.prevent="store( {{ $product->id }}, '{{ $product->name }}', {{$product->regular_price}} )">Add to Cart</a>
+                                
+                                <a href="#" class="btn buy-now"  wire:click.prevent="buyNowAddCart( {{ $product->id }}, '{{ $product->name }}', {{$product->regular_price}} )">Buy Now</a>
                             @endif
                             <div class="wrap-btn">
                                 <a href="#" class="btn btn-compare">Add Compare</a>

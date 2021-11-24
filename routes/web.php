@@ -11,6 +11,7 @@ use App\Http\Livewire\WishListComponent;
 use App\Http\Livewire\ThankyouComponent;
 use App\Http\Livewire\SearchComponent;
 use App\Http\Livewire\ContactComponent;
+use App\Http\Livewire\CheckoutBuyNowComponent;
 
 
 use App\Http\Livewire\user\UserDashboardComponent;
@@ -66,6 +67,7 @@ Route::get('/', HomeComponent::class)->name('home');
 Route::get('/shop', ShopComponent::class)->name('shop');
 Route::get('/cart', CartComponent::class)->name('product.cart');
 Route::get('/checkout', CheckoutComponent::class)->name('checkout');
+Route::get('/checkout', CheckoutBuyNowComponent::class)->name('checkout.buynow');
 Route::get('/product/{slug}', ProductDetailsComponent::class)->name('product.details');
 Route::get('/product-category/{category_slug}', CategoryComponent::class)->name('product.category');
 Route::get('/wishlist', WishListComponent::class)->name('product.wishlist');

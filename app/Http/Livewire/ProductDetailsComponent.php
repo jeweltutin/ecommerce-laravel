@@ -12,6 +12,12 @@ class ProductDetailsComponent extends Component
     public $slug;
     public $qty;
 
+    //For direct buy Now
+    public $productId;
+    public $productName;
+    public $productQty;
+    public $productPrice;
+
     public function mount($slug){
         $this->slug = $slug;
         $this->qty = 1;
@@ -31,6 +37,15 @@ class ProductDetailsComponent extends Component
         if($this->qty > 1){
             $this->qty--;
         }
+    }
+
+    public function buyNowAddCart($product_id, $product_name, $product_price){
+        if (Cart::instance('buyNowCart')->count() > 0){
+            Cart::instance('buyNowCart')->destroy();
+        }
+        Cart::instance('buyNowCart')->add($product_id, $product_name, $this->qty, $product_price)->associate('App\Models\Product');
+        session()->flash('success_message', 'Item added in Cart');
+        return redirect()->route('checkout.buynow');
     }
 
     public function render()
