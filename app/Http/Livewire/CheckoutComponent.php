@@ -9,6 +9,11 @@ use App\Models\Transaction;
 use App\Models\Shipping;
 use Auth;
 use Cart;
+use App\Mail\OrderMail;
+use Mail;
+
+
+
 class CheckoutComponent extends Component
 {
     public $ship_to_different;
@@ -121,10 +126,16 @@ class CheckoutComponent extends Component
             $transaction->save();
         }
         
+        $this->sendOrderConfirmationMail($order);
+
         $this->thankyou = 1;
         Cart::instance('cart')->destroy();
         session()->forget('checkout');
     
+    }
+
+    public function sendOrderConfirmationMail($order){
+        Mail::to($order->email)->send(new OrderMail($order));
     }
 
     public function verifyForCheckout(){
