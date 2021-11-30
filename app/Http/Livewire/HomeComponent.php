@@ -8,6 +8,8 @@ use App\Models\Product;
 use App\Models\HomeCategory;
 use App\Models\Category;
 use App\Models\Sale;
+use Cart;
+use Auth;
 
 class HomeComponent extends Component
 {
@@ -22,6 +24,10 @@ class HomeComponent extends Component
         $catseparate = explode(',', $homecatshow->sel_categories);
         $selectcategories = Category::whereIn('id',$catseparate)->orderBy('name')->get();
         $productstoshow = $homecatshow->no_of_products;
+
+        if (Auth::check()) {
+            Cart::instance('cart')->restore(Auth::user()->email);
+        }
 
         return view('livewire.home-component', compact(['slides','latestproducts','selectcategories','productstoshow','saleproducts','saletimer']))->layout('layouts.base');
     }

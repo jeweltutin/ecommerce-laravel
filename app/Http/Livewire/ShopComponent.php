@@ -7,6 +7,7 @@ use App\Models\Product;
 //use Livewire\WithPagination;
 use App\Models\category;
 use Cart;
+use Auth;
 
 class ShopComponent extends Component
 {
@@ -62,6 +63,10 @@ class ShopComponent extends Component
         }
 
         $categories = Category::all();
+
+        if (Auth::check()) {
+            Cart::instance('cart')->store(Auth::user()->email);
+        }
 
 
         //$products = Product::paginate(7);

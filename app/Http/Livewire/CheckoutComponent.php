@@ -126,7 +126,7 @@ class CheckoutComponent extends Component
             $transaction->save();
         }
         
-        $this->sendOrderConfirmationMail($order);
+        //$this->sendOrderConfirmationMail($order);
 
         $this->thankyou = 1;
         Cart::instance('cart')->destroy();
