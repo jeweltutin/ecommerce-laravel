@@ -1,4 +1,9 @@
 <div>
+    <style>
+        .sclist{
+            list-style: none;
+        }
+    </style>
     <div class="app-main__inner">
         @if ( Auth::user()->user_type == 'USR')
             <p>{{ Auth::user()->name }}</p>
@@ -66,6 +71,7 @@
                                 <th>Id</th>
                                 <th>Category Name</th>
                                 <th>Slug</th>
+                                <th>Sub Category</th>
                                 <th>Action</th>
                             </tr>
                             </thead>
@@ -75,6 +81,13 @@
                                         <th scope="row">{{ $category->id }}</th>
                                         <td>{{ $category->name }}</td>
                                         <td>{{ $category->slug }}</td>
+                                        <td>
+                                            <ul class="sclist">
+                                                @foreach ($category->subCategories as $scategory )
+                                                    <li><i class="fa fa-caret-right"></i> {{ $scategory->name }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </td>
                                         <td><a href="{{ route('admin.editcategory', ['category_slug' => $category->slug]) }}"> <i class="fa fa-edit fa-1x"></i></a>
                                             <a href="" onclick="confirm('Are you sure, You want to delete this Category?') || event.stopImmediatePropagation()" wire:click.prevent="deleteCategory({{ $category->id }})" style="margin-left:10px;"> <i class="fa fa-times fa-1x text-danger"></i></a>
                                         </td>                                   
