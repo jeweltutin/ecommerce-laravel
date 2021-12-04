@@ -53,9 +53,19 @@
                                     @error('name') <span class="error">{{ $message }}</span> @enderror
                                 </div>
                                 <div class="position-relative form-group">
-                                    <label for="catslug" class="">Password</label>
+                                    <label for="catslug" class="">Category Slug</label>
                                     <input id="catslug" placeholder="Category Slug" type="text" wire:model="slug" class="form-control">
                                     @error('slug') <span class="error">{{ $message }}</span> @enderror
+                                </div>
+
+                                <div class="position-relative form-group">
+                                    <label for="pcat" class="">Parent Category:</label>
+                                    <select class="form-control input-md" wire:model="category_id">
+                                        <option value="">None</option>
+                                        @foreach ($categories as $category )
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
                                 </div>
                                 <button type="submit" class="mt-1 btn btn-primary">Submit</button>
                             </form>
