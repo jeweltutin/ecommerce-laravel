@@ -31,11 +31,23 @@
                                     <input id="catname" wire:model="name" wire:keyup="generateslug" placeholder="Category Name" type="text" class="form-control">
                                     @error('name') <span class="error">{{ $message }}</span> @enderror
                                 </div>
+
                                 <div class="position-relative form-group">
-                                    <label for="catslug" class="">Password</label>
+                                    <label for="catslug" class="">Category Slug</label>
                                     <input id="catslug" placeholder="Category Slug" type="text" wire:model="slug" class="form-control">
                                     @error('slug') <span class="error">{{ $message }}</span> @enderror
                                 </div>
+
+                                <div class="position-relative form-group">
+                                    <label for="catslug" class="">Parent Category</label>
+                                    <select class="form-control" wire:model="catgory_id">
+                                        <option value="">None</option>
+                                        @foreach ($categories as $category )
+                                            <option value="{{ $category_id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
                                 <button type="submit" class="mt-1 btn btn-primary">Submit</button>
                             </form>
                         </div>
