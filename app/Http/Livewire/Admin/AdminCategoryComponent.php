@@ -14,11 +14,17 @@ class AdminCategoryComponent extends Component
         $category->delete();
         session()->flash('message','Category has been deleted Successfully');
     }
+
+    public function deleteSubcategory($id){
+        $scategory = Subcategory::find($id);
+        $scategory->delete();
+        session()->flash('message','Subcategory has been deleted Successfully.');
+    }
     
     public function render()
     {
         if ( Auth::user()->user_type == 'ADM'){
-            $categories = Category::paginate(5);
+            $categories = Category::paginate(12);
             $totalCaregory = Category::count();
             $totalSubCategory = Subcategory::count();
             return view('livewire.admin.admin-category-component', compact('categories','totalCaregory','totalSubCategory'))->layout('layouts.adminbase');
