@@ -35,14 +35,30 @@
             <div class="col-md-6">
                 <div class="card widget-content bg-grow-early">
                     <div class="widget-content-wrapper text-white">
-                        Test
+                        <div class="widget-content-left">
+                            <div class="widget-heading">Total Category</div>
+                            <div class="widget-subheading">Total Categories created</div>
+                        </div>
+                        <div class="widget-content-right">
+                            <div class="widget-numbers text-white"><span>{{ $totalCaregory }}</span></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" style="padding-bottom: 20px;">
                 <div class="card widget-content bg-arielle-smile">
                     <div class="widget-content-wrapper text-white">
-                        Test 2
+                        <div class="widget-content-wrapper text-white">
+                            <div class="widget-content-left">
+                                <div class="widget-heading"> Total Subcategory</div>
+                                <div class="widget-subheading">Total Categories created with parent category</div>
+                            </div>
+                            <div class="widget-content-right">
+                                <div class="border border-danger rounded-circle rounded-lg" style="padding: 0 10px;">
+                                    <div class="widget-numbers text-white"><span> {{ $totalSubCategory }}</span></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
