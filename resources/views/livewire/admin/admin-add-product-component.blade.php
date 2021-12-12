@@ -91,7 +91,7 @@
                     
                     <div class="position-relative form-group">
                         <label for="cat" class="">Category</label>
-                        <select id="cat" class="form-control" wire:model="category_id">
+                        <select id="cat" class="form-control" wire:model="category_id" wire:change="changeSubcategory">
                             <option value="" selected>Select Category</option>
                             @foreach ($categories as $category )
                                 <option value="{{ $category->id }}">{{ $category->name }}</option>
@@ -99,6 +99,20 @@
                         </select>
                         @error('category_id') <p class="text-danger">{{ $message }}</p> @enderror
                     </div>
+
+                    <div class="position-relative form-group">
+                        <label for="cat" class="">Sub Category</label>
+                        <select id="cat" class="form-control" wire:model="scategory_id">
+                            <option value="0" selected>Select Sub Category</option>
+                            @foreach ($scategories as $scategory )
+                                <option value="{{ $scategory->id }}">{{ $scategory->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('scategory_id') <p class="text-danger">{{ $message }}</p> @enderror
+                    </div>
+
+
+
                     <div class="position-relative form-group">
                         <label for="pimage" class="">Product Image</label>
                         <input id="pimage" placeholder="Product Image" type="file" wire:model="image" class="input-file">
