@@ -28,6 +28,8 @@ class AdminAddProductComponent extends Component
     public $images;
     public $scategory_id;
 
+    public $allcategories = [];
+
     protected $rules = [
          'name' => 'required',
          'slug' => 'required|unique:products',
@@ -50,7 +52,24 @@ class AdminAddProductComponent extends Component
     }
 
     public function addProduct(){
+        
         $this->validate();
+
+        /* $product = Product::create([
+            'name' => $this->name,
+            'slug' => $this->slug,
+            'short_description' => $this->short_description,
+            'description' => 'This is description',
+            'regular_price' => 1500,
+            'sku' => 'DDff',
+            'stock_status' => 1,
+            'featured' => 0,
+            'quantity' => 100,
+            //'category_id' => 10
+        ]);
+        $product->productInCategories()->attach($this->allcategories);
+        $product->save();
+        dd($this->allcategories); */
         
         $product = new Product();
         $product->name = $this->name;
@@ -85,6 +104,10 @@ class AdminAddProductComponent extends Component
         }
 
         $product->save();
+        if($this->allcategories){
+            $product->productInCategories()->attach($this->allcategories);
+        }
+        
         session()->flash('message', 'Product Created Successfully');
     }
 
@@ -94,7 +117,8 @@ class AdminAddProductComponent extends Component
 
     public function render()
     {
-        $categories = Category::all();
+        //$categories = Category::all();
+        $categories = Category::with('subcategories')->get();
         $scategories = Subcategory::where('category_id',$this->category_id)->get();
         return view('livewire.admin.admin-add-product-component', compact('categories','scategories'))->layout('layouts.adminbase');
     }

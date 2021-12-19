@@ -69,7 +69,6 @@ class ShopComponent extends Component
             Cart::instance('wishlist')->store(Auth::user()->email);
         }
 
-
         //$products = Product::paginate(7);
         //return view('livewire.shop-component',['products' => $products])->layout('layouts.base');
         return view('livewire.shop-component', compact(['products','categories']))->layout('layouts.base');

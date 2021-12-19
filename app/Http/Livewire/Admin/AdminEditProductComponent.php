@@ -32,6 +32,8 @@ class AdminEditProductComponent extends Component
     public $newimages;
     public $scategory_id;
 
+    public $allcategories = [];
+
     protected $rules = [
         'name' => 'required',
         'slug' => 'required',

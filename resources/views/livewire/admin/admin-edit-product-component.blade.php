@@ -111,6 +111,19 @@
                     </div>
 
                     <div class="position-relative form-group">
+                        <label for="cat" class=""><strong>All Category</strong></label><br />
+                        <div style="max-height: 200px; overflow-y: scroll;">
+                            @foreach ($categories as $category )
+                                <input type="checkbox" value="{{ $category->id }}" wire:model="allcategories"  /> {{ $category->name }}<br />
+                                @foreach ($category->subCategories as $subcategory )
+                                    &emsp;<input type="checkbox" value="{{ $subcategory->id }}" /> {{ $subcategory->name }}<br />
+                                @endforeach
+                            @endforeach
+                            <input type="checkbox" /> This is checkbox <br />
+                        </div>
+                    </div>
+
+                    <div class="position-relative form-group">
                         <label for="pimage" class="">Product Image</label>
                         <input id="pimage" placeholder="Product Image" type="file" wire:model="newimage" class="input-file">
                         @if($newimage)
