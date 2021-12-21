@@ -9,6 +9,7 @@ use App\Models\Subcategory;
 use illuminate\Support\Str;
 use Carbon\Carbon;
 use Livewire\WithFileUploads;
+use DB;
 
 class AdminEditProductComponent extends Component
 {
@@ -32,7 +33,7 @@ class AdminEditProductComponent extends Component
     public $newimages;
     public $scategory_id;
 
-    public $allcategories = [];
+    public $selectedcategories = [];
 
     protected $rules = [
         'name' => 'required',
@@ -47,7 +48,8 @@ class AdminEditProductComponent extends Component
     ];
 
     public function mount($product_slug){
-        $product = Product::where('slug', $product_slug)->first();
+        //$product = Product::where('slug', $product_slug)->first();
+        $product = Product::with('productInCategories')->where('slug', $product_slug)->first();
 
         $this->name = $product->name;
         $this->slug = $product->slug;
@@ -64,6 +66,11 @@ class AdminEditProductComponent extends Component
         $this->category_id = $product->category_id;
         $this->scategory_id = $product->subcategory_id;
         $this->product_id = $product->id;
+        $this->allcategories =[];
+
+        //$this->allcategories = explode(',', $product->productInCategories);
+
+        //$this->selectedcategories = $product->productInCategories()->product_id;
     }
 
     public function generateSlug(){
@@ -135,6 +142,11 @@ class AdminEditProductComponent extends Component
         }
 
         $product->save();
+
+        if($this->selectedcategories){
+            $product->productInCategories()->sync($this->selectedcategories);
+        }
+
         session()->flash('message', 'Product Updated Successfully');
     }
 
@@ -145,7 +157,21 @@ class AdminEditProductComponent extends Component
     public function render()
     {
         $categories = Category::all();
+        //$selectedcategories = Category::with('selproducts')->where('product_id', $this->product_id)->get();
+
+        //select `products`.*, `product_category`.`category_id` as `pivot_category_id`, `product_category`.`product_id` as `pivot_product_id` from `products` inner join `product_category` on `products`.`id` = `product_category`.`product_id` where `product_category`.`category_id` in (1, 2, 3, 4, 5, 6, 12, 13, 17);
+        //dd($selectedcategories);
+        //$selectedcategories = DB::select( DB::raw("SELECT * FROM some_table WHERE some_col = '$someVariable'") );
+
+        //$slcats =  Category::with('selproducts')->where('id', $this->category_id)->get();
+        $productId = $this->product_id;
+        $slcats =  DB::table('categories')
+                    ->join('product_category', function ($join) {
+                        $join->on('categories.id', '=', 'product_category.category_id')->where('product_category.product_id', $this->product_id);
+                    })
+                    ->get();
+        
         $scategories = Subcategory::where('category_id', $this->category_id)->get();
-        return view('livewire.admin.admin-edit-product-component', ['categories' => $categories, 'scategories' => $scategories])->layout('layouts.adminbase');
+        return view('livewire.admin.admin-edit-product-component', ['categories' => $categories, 'scategories' => $scategories, 'slcats' => $slcats, 'productId' => $productId ])->layout('layouts.adminbase');
     }
 }

@@ -109,17 +109,43 @@
                         </select>
                         @error('scategory_id') <p class="text-danger">{{ $message }}</p> @enderror
                     </div>
+                    <div class="position-relative form-group">
+                        @if (!$slcats->isEmpty())
+                            <label class=""><strong>Selected Categories</strong></label><br />
+                            @foreach ($slcats as $cat )
+                                {{ $cat->name }},&ensp;
+                            @endforeach
+                        @endif
+                    </div>
 
                     <div class="position-relative form-group">
-                        <label for="cat" class=""><strong>All Category</strong></label><br />
+                        <label for="cat" class=""><strong>All Category<br/><small>Select for Update</small></strong></label><br />
                         <div style="max-height: 200px; overflow-y: scroll;">
-                            @foreach ($categories as $category )
-                                <input type="checkbox" value="{{ $category->id }}" wire:model="allcategories"  /> {{ $category->name }}<br />
-                                @foreach ($category->subCategories as $subcategory )
-                                    &emsp;<input type="checkbox" value="{{ $subcategory->id }}" /> {{ $subcategory->name }}<br />
+                            @php
+                                
+                                $selectedcategories = DB::select( DB::raw("SELECT * FROM product_category WHERE product_id = '$productId'") );
+                                //dd($selectedcategories);
+                            @endphp                            
+                            <div wire:ignore>
+                                @foreach ($categories as $category )
+                                    <input type="checkbox" name="categories[]" value="{{ $category->id }}" wire:model="selectedcategories" checked/> {{ $category->name }}<br />
+                                {{--  @php //$case_catpro = $category->products->toArray(); @endphp
+                                    <input type="checkbox" value="{{ $category->id }}" />
+                                    
+                                    @if( in_array($category->products, $case_catpro) ) checked @endif  
+                                    @if ($category->products->where('category_id', $category->id))
+                                        checked
+                                    @endif /> {{ $category->name }}<br />
+                                    @if ($category->products->where('category_id', $category->id))
+                                        
+                                    @endif--}} 
+
+                                    @foreach ($category->subCategories as $subcategory )
+                                        &emsp;<input type="checkbox" value="{{ $subcategory->id }}" /> {{ $subcategory->name }}<br />
+                                    @endforeach
                                 @endforeach
-                            @endforeach
-                            <input type="checkbox" /> This is checkbox <br />
+                                <input type="checkbox" checked /> This is checkbox <br />
+                            </div>
                         </div>
                     </div>
 
