@@ -28,7 +28,8 @@ class AdminAddProductComponent extends Component
     public $images;
     public $scategory_id;
 
-    public $allcategories = [];
+    public $selectedcategories = [];
+    public $selectedsubcategories = [];
 
     protected $rules = [
          'name' => 'required',
@@ -104,8 +105,13 @@ class AdminAddProductComponent extends Component
         }
 
         $product->save();
-        if($this->allcategories){
-            $product->productInCategories()->attach($this->allcategories);
+
+        if($this->selectedcategories){
+            $product->productInCategories()->attach($this->selectedcategories);
+        }
+
+        if($this->selectedsubcategories){
+            $product->productInSubCategories()->attach($this->selectedsubcategories);
         }
         
         session()->flash('message', 'Product Created Successfully');

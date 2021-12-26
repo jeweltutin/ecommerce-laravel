@@ -109,12 +109,26 @@
                         </select>
                         @error('scategory_id') <p class="text-danger">{{ $message }}</p> @enderror
                     </div>
+
                     <div class="position-relative form-group">
                         @if (!$slcats->isEmpty())
                             <label class=""><strong>Selected Categories</strong></label><br />
-                            @foreach ($slcats as $cat )
-                                {{ $cat->name }},&ensp;
-                            @endforeach
+                            <div class="text-white bg-dark p-1">
+                                @foreach ($slcats as $cat )
+                                    {{ $cat->name }},&ensp;
+                                @endforeach
+                            </div>
+                        @endif
+                    </div>
+
+                    <div class="position-relative form-group">
+                        @if ($slcats->isNotEmpty())
+                            <label class=""><strong>Selected Sub Categories</strong></label><br />
+                            <div class="text-white bg-dark p-1">
+                                @foreach ($slsubcats as $scat )
+                                    {{ $scat->name }},&ensp;
+                                @endforeach
+                            </div>
                         @endif
                     </div>
 
@@ -126,9 +140,10 @@
                                 $selectedcategories = DB::select( DB::raw("SELECT * FROM product_category WHERE product_id = '$productId'") );
                                 //dd($selectedcategories);
                             @endphp                            
-                            <div wire:ignore>
+                            
                                 @foreach ($categories as $category )
-                                    <input type="checkbox" name="categories[]" value="{{ $category->id }}" wire:model="selectedcategories" checked/> {{ $category->name }}<br />
+                                
+                                    <input type="checkbox" name="categories[]" value="{{ $category->id }}" wire:model="selectedcategories" checked /> {{ $category->name }}<br />
                                 {{--  @php //$case_catpro = $category->products->toArray(); @endphp
                                     <input type="checkbox" value="{{ $category->id }}" />
                                     
@@ -141,12 +156,13 @@
                                     @endif--}} 
 
                                     @foreach ($category->subCategories as $subcategory )
-                                        &emsp;<input type="checkbox" value="{{ $subcategory->id }}" /> {{ $subcategory->name }}<br />
+                                        &emsp;<input type="checkbox" value="{{ $subcategory->id }}" wire:model="selectedsubcategories" /> {{ $subcategory->name }}<br />
                                     @endforeach
                                 @endforeach
                                 <input type="checkbox" checked /> This is checkbox <br />
-                            </div>
+                            
                         </div>
+                        
                     </div>
 
                     <div class="position-relative form-group">

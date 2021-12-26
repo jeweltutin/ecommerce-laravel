@@ -115,9 +115,9 @@
                         <label for="cat" class=""><strong>All Category</strong></label><br />
                         <div style="max-height: 200px; overflow-y: scroll;">
                             @foreach ($categories as $category )
-                                <input type="checkbox" value="{{ $category->id }}" wire:model="allcategories"  /> {{ $category->name }}<br />
+                                <input type="checkbox" value="{{ $category->id }}" wire:model="selectedcategories"  /> {{ $category->name }}<br />
                                 @foreach ($category->subCategories as $subcategory )
-                                    &emsp;<input type="checkbox" value="{{ $subcategory->id }}" /> {{ $subcategory->name }}<br />
+                                    &emsp;<input type="checkbox" value="{{ $subcategory->id }}" wire:model="selectedsubcategories" /> {{ $subcategory->name }}<br />
                                 @endforeach
                             @endforeach
                             <input type="checkbox" /> This is checkbox <br />

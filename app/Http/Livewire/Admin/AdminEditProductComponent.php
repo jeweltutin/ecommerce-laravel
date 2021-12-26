@@ -34,6 +34,7 @@ class AdminEditProductComponent extends Component
     public $scategory_id;
 
     public $selectedcategories = [];
+    public $selectedsubcategories = [];
 
     protected $rules = [
         'name' => 'required',
@@ -66,7 +67,8 @@ class AdminEditProductComponent extends Component
         $this->category_id = $product->category_id;
         $this->scategory_id = $product->subcategory_id;
         $this->product_id = $product->id;
-        $this->allcategories =[];
+        
+        //$this->allcategories =[];
 
         //$this->allcategories = explode(',', $product->productInCategories);
 
@@ -147,6 +149,10 @@ class AdminEditProductComponent extends Component
             $product->productInCategories()->sync($this->selectedcategories);
         }
 
+        if($this->selectedsubcategories){
+            $product->productInSubCategories()->sync($this->selectedsubcategories);
+        }
+
         session()->flash('message', 'Product Updated Successfully');
     }
 
@@ -170,8 +176,19 @@ class AdminEditProductComponent extends Component
                         $join->on('categories.id', '=', 'product_category.category_id')->where('product_category.product_id', $this->product_id);
                     })
                     ->get();
+
+        $slsubcats =  DB::table('subcategories')
+                    ->join('subcategory_product', function ($join) {
+                        $join->on('subcategories.id', '=', 'subcategory_product.subcategory_id')->where('subcategory_product.product_id', $this->product_id);
+                    })
+                    ->get();
         
         $scategories = Subcategory::where('category_id', $this->category_id)->get();
-        return view('livewire.admin.admin-edit-product-component', ['categories' => $categories, 'scategories' => $scategories, 'slcats' => $slcats, 'productId' => $productId ])->layout('layouts.adminbase');
+        return view('livewire.admin.admin-edit-product-component', 
+                ['categories' => $categories, 
+                 'scategories' => $scategories, 
+                 'slcats' => $slcats, 
+                 'slsubcats' => $slsubcats,
+                 'productId' => $productId ])->layout('layouts.adminbase');
     }
 }
