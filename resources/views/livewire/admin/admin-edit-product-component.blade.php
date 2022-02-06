@@ -113,7 +113,7 @@
                     <div class="position-relative form-group">
                         @if (!$slcats->isEmpty())
                             <label class=""><strong>Selected Categories</strong></label><br />
-                            <div class="text-white bg-dark p-1">
+                            <div class="text-white bg-primary p-2">
                                 @foreach ($slcats as $cat )
                                     {{ $cat->name }},&ensp;
                                 @endforeach
@@ -124,7 +124,7 @@
                     <div class="position-relative form-group">
                         @if ($slcats->isNotEmpty())
                             <label class=""><strong>Selected Sub Categories</strong></label><br />
-                            <div class="text-white bg-dark p-1">
+                            <div class="text-white bg-primary p-2">
                                 @foreach ($slsubcats as $scat )
                                     {{ $scat->name }},&ensp;
                                 @endforeach
@@ -132,38 +132,49 @@
                         @endif
                     </div>
 
+                    {{-- //Update working with livewire--}}
+                    <div class="position-relative form-group">
+                        <label for="cat" class=""><strong>All Category<br/><small>Select for Update</small></strong></label><br />
+                        <div style="max-height: 200px; overflow-y: scroll;">
+                                @foreach ($categories as $category )
+                                    <input type="checkbox" value="{{ $category->id }}" wire:model="selectedcategories" checked /> {{ $category->name }}<br />
+                                    @foreach ($category->subCategories as $subcategory )
+                                        &emsp;<input type="checkbox" value="{{ $subcategory->id }}" wire:model="selectedsubcategories" /> {{ $subcategory->name }}<br />
+                                    @endforeach
+                                @endforeach                         
+                        </div>
+                    </div> 
+
+                    {{-- //Without live wire this may work need separate form
                     <div class="position-relative form-group">
                         <label for="cat" class=""><strong>All Category<br/><small>Select for Update</small></strong></label><br />
                         <div style="max-height: 200px; overflow-y: scroll;">
                             @php
-                                
-                                $selectedcategories = DB::select( DB::raw("SELECT * FROM product_category WHERE product_id = '$productId'") );
+                                //$selectedcategories = DB::select( DB::raw("SELECT * FROM product_category WHERE product_id = '$productId'") );
                                 //dd($selectedcategories);
                             @endphp                            
-                            
-                                @foreach ($categories as $category )
-                                
-                                    <input type="checkbox" name="categories[]" value="{{ $category->id }}" wire:model="selectedcategories" checked /> {{ $category->name }}<br />
-                                {{--  @php //$case_catpro = $category->products->toArray(); @endphp
-                                    <input type="checkbox" value="{{ $category->id }}" />
-                                    
-                                    @if( in_array($category->products, $case_catpro) ) checked @endif  
-                                    @if ($category->products->where('category_id', $category->id))
-                                        checked
-                                    @endif /> {{ $category->name }}<br />
-                                    @if ($category->products->where('category_id', $category->id))
-                                        
-                                    @endif--}} 
 
-                                    @foreach ($category->subCategories as $subcategory )
-                                        &emsp;<input type="checkbox" value="{{ $subcategory->id }}" wire:model="selectedsubcategories" /> {{ $subcategory->name }}<br />
-                                    @endforeach
+                            @foreach ($categories as $category )
+                                <input type="checkbox"  value="{{ $category->id }}"
+                                @foreach ($slcats as $cat )
+                                    {{ $cat->category_id }}
+                                    @if ($cat->category_id == $category->id)
+                                        checked
+                                    @endif
                                 @endforeach
-                                <input type="checkbox" checked /> This is checkbox <br />
-                            
+                                /> {{ $category->name }}<br />
+                                @foreach ($category->subCategories as $subcategory )
+                                    &emsp;<input type="checkbox" value="{{ $subcategory->id }}"
+                                    @foreach ($slsubcats as $scat )
+                                        @if ($scat->subcategory_id == $subcategory->id)
+                                            checked
+                                        @endif
+                                    @endforeach 
+                                    /> {{ $subcategory->name }}<br />
+                                @endforeach
+                            @endforeach
                         </div>
-                        
-                    </div>
+                    </div> --}}
 
                     <div class="position-relative form-group">
                         <label for="pimage" class="">Product Image</label>

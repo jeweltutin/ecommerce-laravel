@@ -67,12 +67,6 @@ class AdminEditProductComponent extends Component
         $this->category_id = $product->category_id;
         $this->scategory_id = $product->subcategory_id;
         $this->product_id = $product->id;
-        
-        //$this->allcategories =[];
-
-        //$this->allcategories = explode(',', $product->productInCategories);
-
-        //$this->selectedcategories = $product->productInCategories()->product_id;
     }
 
     public function generateSlug(){
