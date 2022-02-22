@@ -55,6 +55,9 @@
 														<a title="Dashboard" href="{{ route('admin.dashboard') }}">Dashboard</a>
 													</li>
 													<li class="menu-item" >
+														<a title="Admin Profile" href="{{ route('user.profile') }}">{{ Auth::user()->name }}'s Profile</a>
+													</li>
+													<li class="menu-item" >
 														<a title="logout" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 													</li>
 													<form method="POST" id="logout-form" action="{{ route('logout') }}">
@@ -71,6 +74,9 @@
 													</li>
 													<li class="menu-item" >
 														<a title="My Orders" href="{{ route('user.orders') }}">My Orders</a>
+													</li>
+													<li class="menu-item" >
+														<a title="My Profile" href="{{ route('user.profile') }}">My Profile</a>
 													</li>
 													<li class="menu-item" >
 														<a title="Change Password" href="{{ route('user.changepassword') }}">Change Password</a>
