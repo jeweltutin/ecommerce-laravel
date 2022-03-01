@@ -51,7 +51,13 @@
         <div class="row" style="padding-top:15px;">
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
-                    <div class="card-body"><h5 class="card-title">Products List</h5>
+                    <div class="card-body">
+                        <div style="padding-bottom: 40px">
+                            <span class="card-title">Products List</span>
+                            <div class="btn-actions-pane-right pull-right">
+                                <input type="text" class="form-control" placeholder="Search..." wire:model="searchTerm" />
+                            </div>  
+                        </div>
                         @if (Session::has('message'))
                             <div class="alert alert-success fade show" role="alert">{{Session::get('message')}}</div>
                         @endif
