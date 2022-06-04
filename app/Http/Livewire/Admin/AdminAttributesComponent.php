@@ -7,6 +7,13 @@ use App\Models\ProductAttribute;
 
 class AdminAttributesComponent extends Component
 {
+    public function deleteAttribute($attrbt_id){
+        $pattribute = ProductAttribute::find($attrbt_id);
+        //dd($pattribute);
+        $pattribute->delete();
+        session()->flash('message','Attribute deleted successfully');
+
+    }
     public function render()
     {
         $pattributes = ProductAttribute::paginate(10);
