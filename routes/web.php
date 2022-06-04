@@ -47,6 +47,9 @@ use App\Http\Livewire\admin\AdminUserManageComponent;
 use App\Http\Livewire\admin\AdminContactComponent; 
 use App\Http\Livewire\admin\AdminContactDetailsComponent; 
 use App\Http\Livewire\admin\AdminSettingComponent; 
+use App\Http\Livewire\admin\AdminAttributesComponent; 
+use App\Http\Livewire\admin\AdminAddAttributeComponent;
+use App\Http\Livewire\admin\AdminEditAttributeComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -127,4 +130,8 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/admin/contact-details/{contact_id}', AdminContactDetailsComponent::class)->name('admin.contactdetails');
 
     Route::get('/admin/settings', AdminSettingComponent::class)->name('admin.settings');
+
+    Route::get('/admin/attributes', AdminAttributesComponent::class)->name('admin.attributes');
+    Route::get('/admin/attribute/add', AdminAddAttributeComponent::class)->name('admin.add_attribute');
+    Route::get('/admin/attribute/edit/{attr_id}', AdminEditAttributeComponent::class)->name('admin.edit_attribute');
 });

@@ -36,6 +36,12 @@
     </a>
 </li>
 <li>
+    <a href="{{ route('admin.attributes') }}">
+        <i class="metismenu-icon pe-7s-pendrive">
+        </i>Attributes
+    </a>
+</li>
+<li>
     <a title="Contact Messages" href="{{ route('admin.contact') }}">
         <i class="metismenu-icon fa fa-envelope" aria-hidden="true">
         </i>Contact Messages
